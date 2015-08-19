@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{f2a71f9b-5d33-465a-a702-920d77279786}") = "bjoernerlwein_de", "bjoernerlwein_de\bjoernerlwein_de.fsproj", "{6FEB7729-B297-45EC-9F7D-5A401A67FDD0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B7E78514-2CAF-4A30-8E12-785A1B7F6DFC}"
+	ProjectSection(SolutionItems) = preProject
+		build.fsx = build.fsx
+		.gitignore = .gitignore
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6FEB7729-B297-45EC-9F7D-5A401A67FDD0}.Debug|x86.ActiveCfg = Debug|x86
+		{6FEB7729-B297-45EC-9F7D-5A401A67FDD0}.Debug|x86.Build.0 = Debug|x86
+		{6FEB7729-B297-45EC-9F7D-5A401A67FDD0}.Release|x86.ActiveCfg = Release|x86
+		{6FEB7729-B297-45EC-9F7D-5A401A67FDD0}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+	EndGlobalSection
+EndGlobal

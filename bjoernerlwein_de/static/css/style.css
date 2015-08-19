@@ -1,1 +1,73 @@
-﻿
+﻿/*!
+The custom stuff starts here!
+*/
+html,
+button,
+input,
+select,
+textarea,
+.pure-g [class*="pure-u"] {
+  /* Set your content font stack here: */
+  font-family: 'Source Sans Pro', sans-serif;
+}
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none;
+  color: #db4105;
+}
+a:hover {
+  text-decoration: underline;
+}
+h1 {
+  font-weight: normal;
+}
+.sidebar {
+  background-color: #222;
+}
+.sidebar footer {
+  text-align: right;
+  margin-top: 4em;
+  font-size: 0.8rem;
+  color: #ededed;
+}
+.sidebar header h1 {
+  text-align: right;
+  margin-bottom: 0;
+}
+.sidebar header h1 a {
+  text-shadow: #222 2px 2px 2px;
+  color: #ededed;
+}
+.sidebar header small {
+  display: block;
+  color: #ededed;
+  text-align: right;
+  font-size: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+.sidebar,
+.content {
+  padding: 1rem;
+}
+.content article {
+  border-bottom: 1px solid #ededed;
+}
+@media screen and (min-width: 48em) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+  }
+  .content {
+    margin-left: 40%;
+  }
+}
+@media screen and (min-width: 64em) {
+  .content {
+    margin-left: 20%;
+  }
+}
