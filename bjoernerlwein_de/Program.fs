@@ -14,6 +14,23 @@ open Types
 
 open RazorEngine
 open RazorEngine.Templating
+open Newtonsoft.Json
+
+//let testjson = File.ReadAllText "./content/pages/impressum.json"
+
+//let deserialized = JsonConvert.DeserializeObject<Content> testjson
+
+let staticpages =
+    Directory.EnumerateFiles("./content/pages/")
+    |> Seq.map (fun path ->
+        let content = File.ReadAllText path
+        JsonConvert.DeserializeObject<Content>(content)
+    )
+    |> Seq.toList
+
+let staticPageCollection = 
+    {pages = staticpages} |> JsonConvert.SerializeObject
+
 
 let template = File.ReadAllText "./static/html/layout.html"
 
@@ -49,6 +66,10 @@ let app mode : WebPart =
         GET >>= path "/js/angular.viewhead.js" >>= Files.file "./static/bower/angularjs-viewhead/angularjs-viewhead.js"
         GET >>= path "/js/script.js" >>= Files.file "./static/js/script.js"
         GET >>= path "/js/script.min.js" >>= Files.file "./static/js/script.min.js"
+        GET >>= path "/staticpages" >>= Writers.setMimeType "application/json" >>= OK staticPageCollection
+        GET >>= path "/favicon.ico" >>= NOT_FOUND "404 not found"
+        GET >>= path "/posts/index" >>= Files.file "./static/html/posts.html"
+        GET >>= path "/posts" >>= OK "{}"
         pathScan "/css/%s" (fun (file) -> 
             let path = "./static/css/" + file
             match File.Exists path with

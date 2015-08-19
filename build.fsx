@@ -18,6 +18,9 @@ let compressCss = minifier.MinifyStyleSheet
 
 let compressJs = minifier.MinifyJavaScript
 
+Target "Bower" (fun _ ->
+    Shell.Exec("bower", "install", "./") |> ignore)
+
 Target "BuildApp" (fun _ ->
     ["./bjoernerlwein_de/bjoernerlwein_de.fsproj"]
     |> MSBuildRelease buildDir "Build"
@@ -45,7 +48,8 @@ Target "Run" (fun _ ->
     Shell.Exec("bjoernerlwein_de.exe", "production", buildDir)
     |> ignore)
 
-"BuildApp"
+"Bower"
+==> "BuildApp"
 ==> "CssMin"
 ==> "JsMin"
 ==> "Run"

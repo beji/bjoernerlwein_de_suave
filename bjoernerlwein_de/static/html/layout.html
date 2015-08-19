@@ -2,7 +2,7 @@
 <html lang="de" ng-app="bjoernerlweinde">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>Bjoernerlwein.de</title>
 
 	@foreach (string stylesheet in Model.Stylesheets) {
 	  @: <link rel="stylesheet" href="/css/@stylesheet?v=@Model.timestamp">
@@ -23,16 +23,12 @@
                 "sub-header">{{viewTitle}}</small>
             </header>
 
-            <div class="pure-menu pure-menu-open" data-ng-controller=
-            "staticPagesController" data-ng-init="index()">
-                <h2 class="pure-menu-heading">Pages</h2>
-
-                <ul>
-                    <li>
-                        <a href="/#/staticpage/{{page.id}}">{{page.title}}</a>
-                    </li>
-                </ul>
-            </div>
+			<div data-ng-controller="staticPagesController" data-ng-init="index()" class="pure-menu pure-menu-open">
+				<h2 class="pure-menu-heading">Pages</h2>
+				<ul>
+					<li ng-repeat="page in pages"><a href="/#/staticpage/{{page.id}}">{{page.title}}</a></li>
+				</ul>
+			</div>
 
             <footer>
                 <a href="http://creativecommons.org/licenses/by-sa/4.0/" rel=
@@ -48,7 +44,7 @@
             </footer>
         </div>
 
-        <div class="pure-u-1 pure-u-md-3-5 pure-u-lg-4-5 content"></div>
+        <div class="pure-u-1 pure-u-md-3-5 pure-u-lg-4-5 content" ng-view></div>
     </div>
 </body>
 </html>

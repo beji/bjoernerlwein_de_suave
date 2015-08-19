@@ -2,15 +2,15 @@
 
 bjoernerlweinde.config(["$routeProvider", function($routeProvider) {
     $routeProvider.when("/", {
-        templateUrl: '/views/posts/index.html'
-    });
-    $routeProvider.when("/post/:post", {
-        templateUrl: '/views/posts/show.html'
-    });
-    $routeProvider.when("/staticpage/:page", {
-        templateUrl: '/views/staticpages/show.html'
-    });
-    $routeProvider.otherwise({redirectTo: '/'});
+        templateUrl: '/posts/index',
+    })
+    .when("/post/:post", {
+        templateUrl: '/posts/show'
+    })
+    .when("/staticpage/:page", {
+        templateUrl: '/staticpages/show'
+    })
+    .otherwise({redirect: '/'});
 }]);
 
 bjoernerlweinde.controller("staticPagesController", ["$scope", "$http", "$sce", "$routeParams", function($scope, $http, $sce, $routeParams) {
@@ -25,6 +25,7 @@ bjoernerlweinde.controller("staticPagesController", ["$scope", "$http", "$sce", 
             url: "/staticpages"
         }).
         success(function(response){
+        	console.log('Ergol');
             $scope.pages = response.pages;
 
         });
