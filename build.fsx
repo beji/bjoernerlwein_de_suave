@@ -48,7 +48,11 @@ Target "Run" (fun _ ->
     Shell.Exec("bjoernerlwein_de.exe", "production", buildDir)
     |> ignore)
 
-"Bower"
+Target "Clean" (fun _ ->
+    CleanDir buildDir)
+
+"Clean"
+==> "Bower"
 ==> "BuildApp"
 ==> "CssMin"
 ==> "JsMin"

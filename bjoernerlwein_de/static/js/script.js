@@ -26,7 +26,7 @@ bjoernerlweinde.controller("staticPagesController", ["$scope", "$http", "$sce", 
         }).
         success(function(response){
         	console.log('Ergol');
-            $scope.pages = response.pages;
+            $scope.pages = response;
 
         });
     };

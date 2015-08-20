@@ -11,26 +11,25 @@ open Suave.Types
 open Suave.Utils
 open System.IO
 open Types
-
 open RazorEngine
 open RazorEngine.Templating
 open Newtonsoft.Json
+open FSharp.Markdown
 
 //let testjson = File.ReadAllText "./content/pages/impressum.json"
 
 //let deserialized = JsonConvert.DeserializeObject<Content> testjson
 
-let staticpages =
+let staticpageCollection =
     Directory.EnumerateFiles("./content/pages/")
     |> Seq.map (fun path ->
         let content = File.ReadAllText path
-        JsonConvert.DeserializeObject<Content>(content)
+        let converted = JsonConvert.DeserializeObject<Content>(content)
+        let parsedContent = Markdown.Parse(converted.content)
+        {converted with
+            content = Markdown.WriteHtml(parsedContent)}
     )
     |> Seq.toList
-
-let staticPageCollection = 
-    {pages = staticpages} |> JsonConvert.SerializeObject
-
 
 let template = File.ReadAllText "./static/html/layout.html"
 
@@ -57,24 +56,36 @@ let page mode =
 
 let app mode : WebPart =
 
-    let basePage = page mode
-
     choose [
-        GET >>= path "/" >>= OK basePage
+        GET >>= path "/" >>= OK (page mode)
         GET >>= path "/js/angular.js" >>= Files.file "./static/bower/angular/angular.js"
         GET >>= path "/js/angular.route.js" >>= Files.file "./static/bower/angular-route/angular-route.js"
         GET >>= path "/js/angular.viewhead.js" >>= Files.file "./static/bower/angularjs-viewhead/angularjs-viewhead.js"
         GET >>= path "/js/script.js" >>= Files.file "./static/js/script.js"
         GET >>= path "/js/script.min.js" >>= Files.file "./static/js/script.min.js"
-        GET >>= path "/staticpages" >>= Writers.setMimeType "application/json" >>= OK staticPageCollection
-        GET >>= path "/favicon.ico" >>= NOT_FOUND "404 not found"
+        GET >>= path "/staticpages" >>= Writers.setMimeType "application/json" 
+            >>= OK (JsonConvert.SerializeObject (List.map (fun (item:Content) ->
+                {item with content = ""}
+            ) staticpageCollection))
+        GET >>= path "/staticpages/show" >>= Files.file "./static/html/staticpage.html"
+        GET >>= pathScan "/staticpage/%s" (fun (id) ->
+            try
+                staticpageCollection
+                |> List.find (fun (item) ->
+                    item.id = id)
+                |> JsonConvert.SerializeObject
+                |> OK
+            with
+            | :? System.Collections.Generic.KeyNotFoundException as msg -> NOT_FOUND "404 not found")
+            >>= Writers.setMimeType "application/json"
         GET >>= path "/posts/index" >>= Files.file "./static/html/posts.html"
         GET >>= path "/posts" >>= OK "{}"
         pathScan "/css/%s" (fun (file) -> 
             let path = "./static/css/" + file
             match File.Exists path with
             | false -> NOT_FOUND "404 not found"
-            | true -> Files.file path)]
+            | true -> Files.file path)
+        NOT_FOUND "404 not found"]
 
 [<EntryPoint>]
 let main argv = 
