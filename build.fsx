@@ -19,7 +19,7 @@ let compressCss = minifier.MinifyStyleSheet
 let compressJs = minifier.MinifyJavaScript
 
 Target "Bower" (fun _ ->
-    Shell.Exec("bower", "install", "./") |> ignore)
+    Shell.Exec("bower", "install --allow-root", "./") |> ignore)
 
 Target "BuildApp" (fun _ ->
     ["./bjoernerlwein_de/bjoernerlwein_de.fsproj"]
