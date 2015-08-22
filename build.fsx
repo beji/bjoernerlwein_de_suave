@@ -30,6 +30,7 @@ Target "CssMin" (fun _ ->
     let cssdir = buildDir + "/static/css/"
     cssdir + "pure.css"
     |> File.ReadAllText
+    |> append (File.ReadAllText (cssdir + "pure.responsive.css"))
     |> append (File.ReadAllText (cssdir + "style.css"))
     |> compressCss
     |> writeToFile (cssdir + "style.min.css"))
