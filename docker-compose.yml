@@ -1,0 +1,7 @@
+web:
+    build: .
+    command: bash -c "nuget restore && fsharpi build.fsx"
+    volumes:
+        - .:/app
+    ports:
+        - "8083:8083"

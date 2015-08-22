@@ -2,7 +2,7 @@
 <html lang="de" ng-app="bjoernerlweinde">
 <head>
 	<meta charset="UTF-8">
-	<title>Bjoernerlwein.de</title>
+	<title ng-bind-template="Bjoernerlwein.de | {{viewTitle}}">Bjoernerlwein.de</title>
 
 	@foreach (string stylesheet in Model.Stylesheets) {
 	  @: <link rel="stylesheet" href="/css/@stylesheet?v=@Model.timestamp">
@@ -19,7 +19,7 @@
     <div class="pure-g">
         <div class="pure-u-1 pure-u-md-2-5 pure-u-lg-1-5 sidebar">
             <header>
-                <h1><a href="/">Bjoernerlwein.de</a></h1><small class=
+                <h1><a ng-href="/#/" href="/">Bjoernerlwein.de</a></h1><small class=
                 "sub-header">{{viewTitle}}</small>
             </header>
 

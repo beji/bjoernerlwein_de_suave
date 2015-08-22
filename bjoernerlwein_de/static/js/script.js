@@ -25,7 +25,6 @@ bjoernerlweinde.controller("staticPagesController", ["$scope", "$http", "$sce", 
             url: "/staticpages"
         }).
         success(function(response){
-        	console.log('Ergol');
             $scope.pages = response;
 
         });
@@ -71,7 +70,7 @@ bjoernerlweinde.controller("postsController",  ["$scope", "$http", "$sce", "$rou
             url: "/posts"
         }).
         success(function(response){
-            $scope.posts = response.posts;
+            $scope.posts = response;
 
         });
     };

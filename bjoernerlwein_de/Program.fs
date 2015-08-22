@@ -64,9 +64,16 @@ let main argv =
         | _ -> Cfg.Debug
 
     let webConfig =
-        { defaultConfig with
-            logger   = Logger.adapter
-        }
+        match mode with
+        | Debug ->
+            { defaultConfig with
+                logger   = Logger.adapter
+            }
+        | Production ->
+            { defaultConfig with
+                logger   = Logger.adapter
+                bindings = [HttpBinding.mk' HTTP "0.0.0.0" 8083] 
+            }
 
     startWebServer webConfig <| app mode
     0 // return an integer exit code
