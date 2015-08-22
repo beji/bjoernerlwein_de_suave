@@ -5,8 +5,7 @@ html,
 button,
 input,
 select,
-textarea,
-.pure-g [class*="pure-u"] {
+textarea{
   /* Set your content font stack here: */
   font-family: 'Source Sans Pro', sans-serif;
 }
@@ -15,88 +14,98 @@ textarea,
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-a {
+a{
   text-decoration: none;
-  color: #db4105;
 }
+a:visited{
+  color: inherit;
+}
+
 a:hover {
   text-decoration: underline;
 }
-h1 {
+
+.content a,
+footer a,
+footer a:visited{
+  color: #db4105;
+}
+
+h1{
   font-weight: normal;
-}
-.sidebar {
-  background-color: #222;
-}
-.sidebar footer {
-  text-align: right;
-  margin-top: 4em;
-  font-size: 0.8rem;
-  color: #ededed;
-}
-.sidebar header h1 {
-  text-align: right;
   margin-bottom: 0;
 }
-.sidebar header h1 a {
-  text-shadow: #222 2px 2px 2px;
-  color: #ededed;
-}
-.sidebar header small {
-  display: block;
-  color: #ededed;
-  text-align: right;
-  font-size: 0.8rem;
-  margin-bottom: 1.5rem;
-}
-.sidebar,
-.content {
+.sidebar{
+  background-color: #222;
   padding: 1rem;
+  color: #ededed;
 }
-.content article {
+.sidebar header h1,
+.sidebar header small{
+  text-align: right;
+}
+.sidebar header small{
+  display: block;
+}
+.sidebar nav{
+  background-color: #ededed;
+  border: 1px solid #dedede;
+  margin-top: 2rem;
+}
+.sidebar nav h2{
+  margin: 0.5rem 1rem;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+.sidebar nav h2,
+.sidebar nav ul li a{
+  color: #222;
+}
+.sidebar nav ul{
+  margin-bottom: 0;
+  padding-left: 0;
+  list-style-type: none;
+}
+.sidebar nav ul li a{
+  display: block;
+  line-height: 2rem;
+  padding-left: 1rem;
+}
+.sidebar nav ul li a:hover{
+  background-color: #d6d6d6;
+  text-decoration: none;
+}
+
+.content article{
   border-bottom: 1px solid #ededed;
 }
-@media screen and (min-width: 48em) {
-  .sidebar {
+
+footer{
+  margin-top: 2rem;
+  text-align: right;
+  font-size: 0.8rem;
+}
+
+@media screen and (min-width: 48rem){
+  .content{
+    margin-left: 35%;
+    padding-left: 0.5rem;
+  }
+  .sidebar{
+    padding-top: 0;
+    padding-bottom: 0;
     position: fixed;
     top: 0;
     bottom: 0;
-  }
-  .content {
-    margin-left: 40%;
+    left: 0;
+    width: 35%;
   }
 }
-@media screen and (min-width: 64em) {
-  .content {
+@media screen and (min-width: 64rem){
+  .content{
     margin-left: 20%;
   }
-}
-.sidebar .pure-menu{
-  background-color: #ededed;
-  border: 1px solid #dedede;
-}
-.sidebar .pure-menu-heading{
-  color: #171717;
-  text-transform: uppercase;
-  font-size: 90%;
-  margin-top: .5em;
-  border-bottom: solid 1px #dedede;
-  line-height: 1.5em;
-  padding: .35em 1.4em;
-}
-.sidebar .pure-menu ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-.sidebar .pure-menu ul li:hover{
-  background-color: #d6d6d6;
-}
-.sidebar .pure-menu ul li a{
-  color: #404040;
-  padding: 0.35em 1.4em;
-  display: block;
-}
-.sidebar .pure-menu ul li a:hover{
-  text-decoration: none;
+  .sidebar{
+    width: 20%;
+  }
 }

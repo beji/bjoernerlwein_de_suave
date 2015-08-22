@@ -28,7 +28,7 @@ Target "BuildApp" (fun _ ->
 
 Target "CssMin" (fun _ ->
     let cssdir = buildDir + "/static/css/"
-    buildDir + "/bower/normalize-css/" + "normalize-css"
+    buildDir + "/static/bower/normalize-css/" + "normalize.css"
     |> File.ReadAllText
     |> append (File.ReadAllText (cssdir + "style.css"))
     |> compressCss

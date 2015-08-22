@@ -1,50 +1,48 @@
 ﻿<!DOCTYPE html>
 <html lang="de" ng-app="bjoernerlweinde">
 <head>
-	<meta charset="UTF-8">
-	<title ng-bind-template="Bjoernerlwein.de | {{viewTitle}}">Bjoernerlwein.de</title>
+    <meta charset="UTF-8">
+    <title ng-bind-template="Bjoernerlwein.de | {{viewTitle}}">Bjoernerlwein.de</title>
 
-	@foreach (string stylesheet in Model.Stylesheets) {
-	  @: <link rel="stylesheet" href="/css/@stylesheet?v=@Model.timestamp">
-	}
+    @foreach (string stylesheet in Model.Stylesheets) {
+      @: <link rel="stylesheet" href="/css/@stylesheet?v=@Model.timestamp">
+    }
 
-	<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 
-	@foreach (string script in Model.Scripts) {
-	  @: <script src="/js/@script?v=@Model.timestamp"></script>
-	}
+    @foreach (string script in Model.Scripts) {
+      @: <script src="/js/@script?v=@Model.timestamp"></script>
+    }
 
 </head>
 <body>
-    <div class="wrapper">
-        <div class="sidebar">
-            <header>
-                <h1><a ng-href="/#/" href="/">Bjoernerlwein.de</a></h1><small class=
-                "sub-header">{{viewTitle}}</small>
-            </header>
+    <div class="sidebar">
+        <header>
+            <h1><a ng-href="/#/" href="/">Bjoernerlwein.de</a></h1><small class=
+            "sub-header">{{viewTitle}}</small>
+        </header>
 
-			<nav data-ng-controller="staticPagesController" data-ng-init="index()" class="navigation">
-				<h2>Pages</h2>
-				<ul>
-					<li ng-repeat="page in pages"><a href="/#/staticpage/{{page.id}}">{{page.title}}</a></li>
-				</ul>
-			</nav>
+        <nav data-ng-controller="staticPagesController" data-ng-init="index()" class="navigation">
+            <h2>Pages</h2>
+            <ul>
+                <li ng-repeat="page in pages"><a href="/#/staticpage/{{page.id}}">{{page.title}}</a></li>
+            </ul>
+        </nav>
 
-            <footer>
-                <a href="http://creativecommons.org/licenses/by-sa/4.0/" rel=
-                "license"><img alt="Creative Commons License" src=
-                "http://i.creativecommons.org/l/by-sa/4.0/88x31.png" style=
-                "border-width: 0;"></a><br>
-                <span>bjoernerlwein.de</span> by <a href=
-                "http://bjoernerlwein.de" rel="cc:attributionURL">Björn
-                Erlwein</a> is licensed under a <a href=
-                "http://creativecommons.org/licenses/by-sa/4.0/" rel=
-                "license">Creative Commons Attribution-ShareAlike 4.0
-                International License</a>.
-            </footer>
-        </div>
-
-        <div class="content" ng-view></div>
+        <footer>
+            <a href="http://creativecommons.org/licenses/by-sa/4.0/" rel=
+            "license"><img alt="Creative Commons License" src=
+            "http://i.creativecommons.org/l/by-sa/4.0/88x31.png" style=
+            "border-width: 0;"></a><br>
+            <span>bjoernerlwein.de</span> by <a href=
+            "http://bjoernerlwein.de" rel="cc:attributionURL">Björn
+            Erlwein</a> is licensed under a <a href=
+            "http://creativecommons.org/licenses/by-sa/4.0/" rel=
+            "license">Creative Commons Attribution-ShareAlike 4.0
+            International License</a>.
+        </footer>
     </div>
+
+    <div class="content" ng-view></div>
 </body>
 </html>
