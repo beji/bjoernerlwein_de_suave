@@ -13,6 +13,7 @@
             GET >>= path "/js/angular.viewhead.js" >>= Files.file "./static/bower/angularjs-viewhead/angularjs-viewhead.js"
             GET >>= path "/js/script.js" >>= Files.file "./static/js/script.js"
             GET >>= path "/js/script.min.js" >>= Files.file "./static/js/script.min.js"
+            GET >>= path "/css/normalize.css" >>= Files.file "./static/bower/normalize-css/normalize.css"
             pathScan "/css/%s" (fun (file) -> 
                 let path = "./static/css/" + file
                 match File.Exists path with

@@ -29,7 +29,7 @@ let page mode =
         match mode with
         | Debug -> 
             let pageVars:PageVars = 
-                {Stylesheets = [|"pure.css";"pure.responsive.css";"style.css"|];
+                {Stylesheets = [|"normalize.css";"style.css"|];
                 Scripts = [|"angular.js";"angular.route.js";"angular.viewhead.js";"script.js"|];
                 timestamp = timestamp}
             pageVars
