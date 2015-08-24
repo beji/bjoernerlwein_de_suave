@@ -47,6 +47,7 @@ let app mode : WebPart =
         StaticfileRoutes.routes
         Posts.routes
         Staticpages.routes
+        Sitemap.route
         GET >>= path "/" >>= OK (page mode)
         NOT_FOUND "404 not found"]
 

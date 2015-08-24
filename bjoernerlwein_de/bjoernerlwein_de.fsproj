@@ -98,6 +98,7 @@
     <Compile Include="StaticfileRoutes.fs" />
     <Compile Include="Posts.fs" />
     <Compile Include="Staticpages.fs" />
+    <Compile Include="Sitemap.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\..\Microsoft SDKs\F#\4.0\Framework\v4.0\Microsoft.FSharp.Targets" />
