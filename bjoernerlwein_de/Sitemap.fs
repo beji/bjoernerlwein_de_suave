@@ -15,7 +15,7 @@
         ) contentList
 
     let urlList = 
-        List.concat [generateRoutesFromContentList staticpageCollection ListType.StaticPages; generateRoutesFromContentList postCollection ListType.Posts]
+        List.concat [ ["http://bjoernerlwein.de"]; generateRoutesFromContentList staticpageCollection ListType.StaticPages; generateRoutesFromContentList postCollection ListType.Posts]
         |> String.concat "\n"
 
     let route = GET >>= path "/sitemap" >>= OK urlList
