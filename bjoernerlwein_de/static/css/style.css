@@ -78,6 +78,7 @@ h1{
 
 .content article{
   border-bottom: 1px solid #ededed;
+  max-width: 80rem;
 }
 
 footer{
