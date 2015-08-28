@@ -42,20 +42,11 @@
     <Reference Include="NodaTime.Serialization.JsonNet">
       <HintPath>..\packages\NodaTime.Serialization.JsonNet.1.3.1\lib\net35-Client\NodaTime.Serialization.JsonNet.dll</HintPath>
     </Reference>
-    <Reference Include="FSharp.Actor">
-      <HintPath>..\packages\FSharp.Actor-logary.3.3.3\lib\net40\FSharp.Actor.dll</HintPath>
-    </Reference>
     <Reference Include="Suave">
       <HintPath>..\packages\Suave.0.31.1\lib\net40\Suave.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="Logary">
-      <HintPath>..\packages\Logary.3.3.3\lib\net40\Logary.dll</HintPath>
-    </Reference>
-    <Reference Include="Logary.Adapters.Suave">
-      <HintPath>..\packages\Logary.Adapters.Suave.3.3.3\lib\net40\Logary.Adapters.Suave.dll</HintPath>
     </Reference>
     <Reference Include="FSharp.Compiler.Service">
       <HintPath>..\packages\FSharp.Compiler.Service.0.0.87\lib\net45\FSharp.Compiler.Service.dll</HintPath>
@@ -81,14 +72,23 @@
     <Reference Include="FSharp.MetadataFormat">
       <HintPath>..\packages\FSharp.Formatting.2.10.0\lib\net40\FSharp.MetadataFormat.dll</HintPath>
     </Reference>
-    <Reference Include="RazorEngine">
-      <HintPath>..\packages\FSharp.Formatting.2.10.0\lib\net40\RazorEngine.dll</HintPath>
-    </Reference>
     <Reference Include="System.Web.Razor">
       <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="RazorEngine">
+      <HintPath>..\packages\RazorEngine.3.7.2\lib\net45\RazorEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="FSharp.Actor">
+      <HintPath>..\packages\FSharp.Actor-logary.3.4.0\lib\net40\FSharp.Actor.dll</HintPath>
+    </Reference>
+    <Reference Include="Logary">
+      <HintPath>..\packages\Logary.3.4.0\lib\net40\Logary.dll</HintPath>
+    </Reference>
+    <Reference Include="Logary.Adapters.Suave">
+      <HintPath>..\packages\Logary.Adapters.Suave.3.4.0\lib\net40\Logary.Adapters.Suave.dll</HintPath>
+    </Reference>
     <Reference Include="FsPickler">
-      <HintPath>..\packages\FsPickler.1.3.5\lib\net45\FsPickler.dll</HintPath>
+      <HintPath>..\packages\FsPickler.1.3.7\lib\net45\FsPickler.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
