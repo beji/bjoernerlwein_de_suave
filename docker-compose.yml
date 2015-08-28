@@ -1,7 +1,7 @@
 web:
     build: .
-    command: bash -c "nuget restore && fsharpi build.fsx"
-    environment: 
+    command: ./build.sh
+    environment:
         - VIRTUAL_HOST=bjoernerlwein.de
     volumes:
         - .:/app

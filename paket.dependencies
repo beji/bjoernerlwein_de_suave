@@ -1,0 +1,10 @@
+source https://nuget.org/api/v2
+
+nuget Fake
+nuget Suave
+nuget AjaxMin
+nuget Fsharp.Formatting
+nuget Logary
+nuget Logary.Adapters.Suave
+nuget Newtonsoft.Json.Fsharp
+nuget RazorEngine

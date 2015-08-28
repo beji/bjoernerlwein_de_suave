@@ -1,6 +1,6 @@
-﻿#I "packages/FAKE.4.1.3/tools/"
-#r "packages/FAKE.4.1.3/tools/FakeLib.dll"
-#r "packages/AjaxMin.5.14.5506.26202/lib/net40/AjaxMin.dll"
+﻿#I "packages/FAKE/tools/"
+#r "packages/FAKE/tools/FakeLib.dll"
+#r "packages/AjaxMin/lib/net40/AjaxMin.dll"
 
 open Fake
 open System.IO
@@ -14,16 +14,21 @@ let append right left = left + right
 
 let minifier = new Minifier()
 
-let compressCss = minifier.MinifyStyleSheet 
+let compressCss = minifier.MinifyStyleSheet
 
 let compressJs = minifier.MinifyJavaScript
 
 Target "Bower" (fun _ ->
     Shell.Exec("bower", "install --allow-root", "./") |> ignore)
 
-Target "BuildApp" (fun _ ->
+Target "BuildRelease" (fun _ ->
     ["./bjoernerlwein_de/bjoernerlwein_de.fsproj"]
     |> MSBuildRelease buildDir "Build"
+    |> Log "AppBuild-Output: ")
+
+Target "BuildDebug" (fun _ ->
+    ["./bjoernerlwein_de/bjoernerlwein_de.fsproj"]
+    |> MSBuildDebug buildDir "Build"
     |> Log "AppBuild-Output: ")
 
 Target "CssMin" (fun _ ->
@@ -48,14 +53,22 @@ Target "Run" (fun _ ->
     Shell.Exec("bjoernerlwein_de.exe", "production", buildDir)
     |> ignore)
 
+Target "RunDebug" (fun _ ->
+    Shell.Exec("bjoernerlwein_de.exe", "", buildDir)
+    |> ignore)
+
 Target "Clean" (fun _ ->
     CleanDir buildDir)
 
 "Clean"
 ==> "Bower"
-==> "BuildApp"
+==> "BuildRelease"
 ==> "CssMin"
 ==> "JsMin"
 ==> "Run"
+
+"Clean"
+==> "BuildDebug"
+==> "RunDebug"
 
 RunTargetOrDefault "Run"

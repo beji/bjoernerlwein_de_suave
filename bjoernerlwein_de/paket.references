@@ -1,0 +1,16 @@
+AjaxMin
+FSharp.Actor-logary
+FSharp.Compiler.Service
+FSharp.Core
+FSharp.Formatting
+FSharpVSPowerTools.Core
+FsPickler
+Logary
+Logary.Adapters.Suave
+Microsoft.AspNet.Razor
+Newtonsoft.Json
+Newtonsoft.Json.FSharp
+NodaTime
+NodaTime.Serialization.JsonNet
+RazorEngine
+Suave

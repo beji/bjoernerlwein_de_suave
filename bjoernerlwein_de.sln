@@ -1,6 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".paket", ".paket", "{030F49D2-2AAE-485F-A39B-F4BB98ED9095}"
+	ProjectSection(SolutionItems) = preProject
+		paket.dependencies = paket.dependencies
+	EndProjectSection
+EndProject
 Project("{f2a71f9b-5d33-465a-a702-920d77279786}") = "bjoernerlwein_de", "bjoernerlwein_de\bjoernerlwein_de.fsproj", "{6FEB7729-B297-45EC-9F7D-5A401A67FDD0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B7E78514-2CAF-4A30-8E12-785A1B7F6DFC}"
