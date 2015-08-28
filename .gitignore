@@ -42,3 +42,5 @@ Thumbs.db
 build/
 
 bjoernerlwein_de/static/bower/
+.fake
+.paket/paket.exe
