@@ -20,21 +20,21 @@ open RazorEngine.Templating
 
 let template = File.ReadAllText "./static/html/layout.html"
 
-let timestamp = 
+let timestamp =
     let zone = System.TimeZone.CurrentTimeZone.GetUtcOffset System.DateTime.Now
     System.DateTime.UtcNow.ToString("yyyyMMddHHmmss")
 
-let page mode = 
-    let pageVars = 
+let page mode =
+    let pageVars =
         match mode with
-        | Debug -> 
-            let pageVars:PageVars = 
+        | Debug ->
+            let pageVars:PageVars =
                 {Stylesheets = [|"normalize.css";"style.css"|];
                 Scripts = [|"angular.js";"angular.route.js";"angular.viewhead.js";"script.js"|];
                 timestamp = timestamp}
             pageVars
         | Production ->
-            let pageVars:PageVars = 
+            let pageVars:PageVars =
                 {Stylesheets = [|"style.min.css"|];
                 Scripts = [|"script.min.js"|];
                 timestamp = timestamp}
@@ -52,11 +52,11 @@ let app mode : WebPart =
         NOT_FOUND "404 not found"]
 
 [<EntryPoint>]
-let main argv = 
+let main argv =
 
     Logger.logMsg "Starting Web Server"
 
-    let mode = 
+    let mode =
         match argv.Length with
         | 1 ->
             match argv.[0] with
@@ -73,9 +73,8 @@ let main argv =
         | Production ->
             { defaultConfig with
                 logger   = Logger.adapter
-                bindings = [HttpBinding.mk' HTTP "0.0.0.0" 8083] 
+                bindings = [HttpBinding.mk' HTTP "0.0.0.0" 8083]
             }
 
     startWebServer webConfig <| app mode
     0 // return an integer exit code
-

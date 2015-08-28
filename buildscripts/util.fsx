@@ -1,8 +1,9 @@
-﻿#I "packages/FAKE/tools/"
-#r "packages/FAKE/tools/FakeLib.dll"
-#r "packages/AjaxMin/lib/net40/AjaxMin.dll"
+#I "../packages/FAKE/tools/"
+#r "../packages/FAKE/tools/FakeLib.dll"
+#r "../packages/AjaxMin/lib/net40/AjaxMin.dll"
 
 open Fake
+open Fake.FileHelper
 open System.IO
 open Microsoft.Ajax.Utilities
 
@@ -17,6 +18,18 @@ let minifier = new Minifier()
 let compressCss = minifier.MinifyStyleSheet
 
 let compressJs = minifier.MinifyJavaScript
+
+let rec matchVaildExtensions extensions file =
+  match extensions with
+  | [] -> false
+  | [extension] ->
+    match (|EndsWith|_|) extension file with
+    | Some() -> true
+    | _ -> false
+  | head::tail ->
+    match (|EndsWith|_|) head file with
+    | Some() -> true
+    | _ -> matchVaildExtensions tail file
 
 Target "Bower" (fun _ ->
     Shell.Exec("bower", "install --allow-root", "./") |> ignore)
@@ -39,6 +52,19 @@ Target "CssMin" (fun _ ->
     |> compressCss
     |> writeToFile (cssdir + "style.min.css"))
 
+Target "CopyStaticfiles" (fun _ ->
+    CopyDir (buildDir + "/static/bower") "bjoernerlwein_de/static/bower" (matchVaildExtensions [".css"; ".js"]) |> ignore
+    CopyDir (buildDir + "/static/css") "bjoernerlwein_de/static/css" (matchVaildExtensions [".css"]) |> ignore
+    CopyDir (buildDir + "/static/js") "bjoernerlwein_de/static/js" (matchVaildExtensions [".js"]) |> ignore
+    CopyDir (buildDir + "/static/html") "bjoernerlwein_de/static/html" (matchVaildExtensions [".html"]) |> ignore
+)
+
+Target "CopyContent" (fun _ ->
+    CopyDir (buildDir + "/content") "bjoernerlwein_de/content" (matchVaildExtensions [".json"]) |> ignore
+)
+
+
+
 Target "JsMin" (fun _ ->
     let jsDir = buildDir + "/static/"
     File.ReadAllText (jsDir + "bower/angular/angular.js")
@@ -49,7 +75,7 @@ Target "JsMin" (fun _ ->
     |> writeToFile (jsDir + "js/script.min.js")
     |> ignore)
 
-Target "Run" (fun _ ->
+Target "RunRelease" (fun _ ->
     Shell.Exec("bjoernerlwein_de.exe", "production", buildDir)
     |> ignore)
 
@@ -59,16 +85,3 @@ Target "RunDebug" (fun _ ->
 
 Target "Clean" (fun _ ->
     CleanDir buildDir)
-
-"Clean"
-==> "Bower"
-==> "BuildRelease"
-==> "CssMin"
-==> "JsMin"
-==> "Run"
-
-"Clean"
-==> "BuildDebug"
-==> "RunDebug"
-
-RunTargetOrDefault "Run"
