@@ -73,7 +73,7 @@ let main argv =
         | Production ->
             { defaultConfig with
                 logger   = Logger.adapter
-                bindings = [HttpBinding.mk' HTTP "0.0.0.0" 8083]
+                bindings = [HttpBinding.mk HTTP (System.Net.IPAddress.Parse "0.0.0.0") 8083us]
             }
 
     startWebServer webConfig <| app mode
