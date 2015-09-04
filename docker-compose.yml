@@ -3,7 +3,5 @@ web:
     command: ./build.sh
     environment:
         - VIRTUAL_HOST=bjoernerlwein.de
-    volumes:
-        - .:/app
     ports:
         - "8083:8083"
