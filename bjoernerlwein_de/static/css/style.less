@@ -1,0 +1,125 @@
+@linkcolor: #db4105;
+@light-grey: #ededed;
+
+.media-query(@width; @percentage){
+  @media screen and (min-width: @width){
+    .content{
+      margin-left: @percentage;
+    }
+    .sidebar{
+      width: @percentage;
+    }
+  }
+}
+
+/*!
+The custom stuff starts here!
+*/
+html,
+button,
+input,
+select,
+textarea{
+  /* Set your content font stack here: */
+  font-family: 'Source Sans Pro', sans-serif;
+}
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+a{
+  text-decoration: none;
+}
+a:visited{
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.content a,
+footer a,
+footer a:visited{
+  color: @linkcolor;
+}
+
+h1{
+  font-weight: normal;
+  margin-bottom: 0;
+}
+.sidebar{
+  background-color: #222;
+  padding: 1rem;
+  color: @light-grey;
+
+  header{
+    h1, small{
+      text-align: right;
+    }
+    small{
+      display: block;
+    }
+  }
+  nav{
+    background-color: @light-grey;
+    border: 1px solid darken(@light-grey, 10%);
+    margin-top: 2rem;
+    h2{
+      margin: 0.5rem 1rem;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+    }
+    h2, ul li a{
+      color: #222;
+    }
+
+    ul{
+      margin-bottom: 0;
+      padding-left: 0;
+      list-style-type: none;
+      li a{
+        display: block;
+        line-height: 2rem;
+        padding-left: 1rem;
+
+        &:hover{
+          background-color: darken(@light-grey, 15%);
+          text-decoration: none;
+        }
+      }
+
+    }
+  }
+}
+
+.content article{
+  border-bottom: 1px solid @light-grey;
+  max-width: 80rem;
+}
+
+footer{
+  margin-top: 2rem;
+  text-align: right;
+  font-size: 0.8rem;
+}
+
+@media screen and (min-width: 768px){
+  .content{
+    margin-left: 35%;
+    padding-left: 1rem;
+  }
+  .sidebar{
+    padding-top: 0;
+    padding-bottom: 0;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 35%;
+  }
+}
+
+.media-query(1024px; 25%);
+.media-query(1280px; 20%);
