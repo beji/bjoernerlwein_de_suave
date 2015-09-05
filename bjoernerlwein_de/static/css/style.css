@@ -87,7 +87,7 @@ footer{
   font-size: 0.8rem;
 }
 
-@media screen and (min-width: 48rem){
+@media screen and (min-width: 768px){
   .content{
     margin-left: 35%;
     padding-left: 1rem;
@@ -102,7 +102,15 @@ footer{
     width: 35%;
   }
 }
-@media screen and (min-width: 64rem){
+@media screen and (min-width: 1024px){
+  .content{
+    margin-left: 25%;
+  }
+  .sidebar{
+    width: 25%;
+  }
+}
+@media screen and (min-width: 1280px){
   .content{
     margin-left: 20%;
   }
