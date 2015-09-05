@@ -5,7 +5,6 @@
 open Fake
 
 "Clean"
-==> "Bower"
 ==> "CopyStaticfiles"
 ==> "CopyContent"
 ==> "CssMin"
