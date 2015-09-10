@@ -29,7 +29,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <WarningLevel>3</WarningLevel>
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <DocumentationFile>bin\Release\adwad.XML</DocumentationFile>
+    <DocumentationFile>bin\Release\bjoernerlwein_de.XML</DocumentationFile>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
@@ -51,19 +51,6 @@
     <Compile Include="Program.fs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\..\Microsoft SDKs\F#\4.0\Framework\v4.0\Microsoft.FSharp.Targets" />
-  <ItemGroup>
-    <None Include="paket.references" />
-
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="static\" />
-    <Folder Include="static\css\" />
-    <Folder Include="static\bower\" />
-    <Folder Include="static\js\" />
-    <Folder Include="content\" />
-    <Folder Include="content\pages\" />
-    <Folder Include="content\posts\" />
-  </ItemGroup>
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v3.5'">
       <ItemGroup>
