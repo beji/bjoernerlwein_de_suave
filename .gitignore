@@ -44,3 +44,4 @@ build/
 bjoernerlwein_de/static/bower/
 .fake
 .paket/paket.exe
+bjoernerlwein_de/static/css/style.css
