@@ -29,7 +29,7 @@ let routes =
             >>= OK (JsonConvert.SerializeObject (List.map (fun (item:Content) ->
                 {item with content = ""} //No need to return the full html content, it isn't used anyways
             ) staticpageCollection))
-        GET >>= path "/staticpages/show" >>= Files.file "./static/html/staticpage.html"
+        GET >>= path "/staticpages/show" >>= Writers.setMimeType "text/html" >>= OK Templates.staticpage
         GET >>= pathScan "/staticpage/%s" (fun (id) ->
             try
                 staticpageCollection

@@ -58,3 +58,25 @@ let page mode =
               International License"]
             "."]]
         div [classAttr "content"; attr "ng-view" "ng-view"] []]]
+
+let post =
+  div [attr "data-ng-controller" "postsController"; attr "data-ng-init" "show()"] [
+    article [attr "id" "{{post.id}}"] [
+      h1 [attr "view-title" "view-title"] ["{{post.title}}"]
+      small [] ["{{toDateString(post.date)}}"]
+      div [attr "ng-bind-html" "to_trusted(post.content)"] [""]]]
+
+let posts =
+  div [attr "data-ng-controller" "postsController"; attr "data-ng-init" "index()"] [
+    node "view-title" [] ["Posts"]
+    article [attr "id" "{{post.id}}"; attr "ng-repeat" "post in posts"] [
+      h1 [] [
+        a [href "#/post/{{post.id}}"] ["{{post.title}}"]]
+      small [] ["{{toDateString(post.date)}}"]
+      div [attr "ng-bind-html" "to_trusted(post.content)"] [""]]]
+
+let staticpage =
+  div [attr "data-ng-controller" "staticPagesController"; attr "data-ng-init" "show()"] [
+    article [attr "id" "{{page.id}}"] [
+      h1 [attr "view-title" "view-title"] ["{{page.title}}"]
+      div [attr "ng-bind-html" "to_trusted(page.content)"] [""]]]

@@ -27,9 +27,9 @@ let postCollection =
 
 let routes =
     choose [
-        GET >>= path "/posts/index" >>= Files.file "./static/html/posts.html"
+        GET >>= path "/posts/index" >>= Writers.setMimeType "text/html" >>= OK Templates.posts
         GET >>= path "/posts" >>= Writers.setMimeType "application/json" >>= OK (JsonConvert.SerializeObject postCollection)
-        GET >>= path "/posts/show" >>= Files.file "./static/html/post.html"
+        GET >>= path "/posts/show" >>= Writers.setMimeType "text/html" >>= OK Templates.post
         GET >>= pathScan "/post/%s" (fun (id) ->
             try
                 postCollection
