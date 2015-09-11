@@ -65,7 +65,8 @@ let page mode =
             a [href "http://bjoernerlwein.de"; attr "rel" "cc:attributionURL"] ["Björn Erlwein"]
             " is licensed under a "
             a [href "http://creativecommons.org/licenses/by-sa/4.0/"; attr "rel" "license"] ["Creative Commons Attribution-ShareAlike 4.0
-              International License"]]]
+              International License"]
+            "."]]
         div [classAttr "content"; attr "ng-view" "ng-view"] []]]
 
 
