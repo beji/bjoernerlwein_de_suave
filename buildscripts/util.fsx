@@ -56,7 +56,6 @@ Target "CopyStaticfiles" (fun _ ->
     CopyDir (buildDir + "/static/bower") "bjoernerlwein_de/static/bower" (matchVaildExtensions [".css"; ".js"]) |> ignore
     CopyDir (buildDir + "/static/css") "bjoernerlwein_de/static/css" (matchVaildExtensions [".css"]) |> ignore
     CopyDir (buildDir + "/static/js") "bjoernerlwein_de/static/js" (matchVaildExtensions [".js"]) |> ignore
-    CopyDir (buildDir + "/static/html") "bjoernerlwein_de/static/html" (matchVaildExtensions [".html"]) |> ignore
 )
 
 Target "CopyContent" (fun _ ->
