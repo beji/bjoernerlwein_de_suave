@@ -1,8 +1,0 @@
-﻿<div data-ng-controller="postsController" data-ng-init="index()">
-	<view-title>Posts</view-title>
-	<article id="{{post.id}}" ng-repeat="post in posts">
-		<h1><a href="#/post/{{post.id}}">{{post.title}}</a></h1>
-		<small>{{toDateString(post.date)}}</small>
-		<div ng-bind-html="to_trusted(post.content)"></div>
-	</article>
-</div>
