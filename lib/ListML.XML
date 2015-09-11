@@ -1,0 +1,588 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+<assembly><name>ListML</name></assembly>
+<members>
+<member name="T:ListML.Core.KeyValue">
+<summary>
+ A Basic record contaning a key and a value
+ Mainly used as a basic implementation of the tag attributes
+</summary>
+</member>
+<member name="M:ListML.Core.node(System.String,Microsoft.FSharp.Collections.FSharpList{ListML.Core.KeyValue},Microsoft.FSharp.Collections.FSharpList{System.String})">
+<summary>
+ Renders the given node element into its XML representation
+ A nested XML-Tree can easily be handeled by nesting calls of the node function
+ Text inside the element can be handled by passing a simple String as one of the children
+ Example:
+ node &quot;html&quot; [attr &quot;lang&quot; &quot;en&quot;] [
+   node &quot;head&quot; [] []
+   node &quot;body&quot; [] [&quot;I am a simple Text&quot;]]
+
+ Which results in &lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;/body&gt;&lt;/html&gt;
+ Helper functions to shorten the typing for HTML-Code can be found in the
+ ListMl.HTML module
+</summary>
+</member>
+<member name="M:ListML.Core.attr(System.String,System.String)">
+<summary>
+ Creates a new KeyValue record with the given parameters
+</summary>
+</member>
+<member name="P:ListML.HTML.wbr">
+<summary>
+Defines a possible line-break
+</summary>
+</member>
+<member name="P:ListML.HTML.video">
+<summary>
+Defines a video or movie
+</summary>
+</member>
+<member name="P:ListML.HTML.var">
+<summary>
+Defines a variable
+</summary>
+</member>
+<member name="P:ListML.HTML.ul">
+<summary>
+Defines an unordered list
+</summary>
+</member>
+<member name="P:ListML.HTML.u">
+<summary>
+Defines text that should be stylistically different from normal text
+</summary>
+</member>
+<member name="P:ListML.HTML.track">
+<summary>
+Defines text tracks for media elements (let video = node &quot;video&quot; and let audio = node &quot;audio&quot;)
+</summary>
+</member>
+<member name="P:ListML.HTML.tr">
+<summary>
+Defines a row in a table
+</summary>
+</member>
+<member name="P:ListML.HTML.title">
+<summary>
+Defines a title for the document
+</summary>
+</member>
+<member name="P:ListML.HTML.time">
+<summary>
+Defines a date/time
+</summary>
+</member>
+<member name="P:ListML.HTML.thead">
+<summary>
+Groups the header content in a table
+</summary>
+</member>
+<member name="P:ListML.HTML.th">
+<summary>
+Defines a header cell in a table
+</summary>
+</member>
+<member name="P:ListML.HTML.tfoot">
+<summary>
+Groups the footer content in a table
+</summary>
+</member>
+<member name="P:ListML.HTML.textarea">
+<summary>
+Defines a multiline input control (text area)
+</summary>
+</member>
+<member name="P:ListML.HTML.td">
+<summary>
+Defines a cell in a table
+</summary>
+</member>
+<member name="P:ListML.HTML.tbody">
+<summary>
+Groups the body content in a table
+</summary>
+</member>
+<member name="P:ListML.HTML.table">
+<summary>
+Defines a table
+</summary>
+</member>
+<member name="P:ListML.HTML.sup">
+<summary>
+Defines superscripted text
+</summary>
+</member>
+<member name="P:ListML.HTML.summary">
+<summary>
+Defines a visible heading for a let details = node &quot;details&quot; element
+</summary>
+</member>
+<member name="P:ListML.HTML.sub">
+<summary>
+Defines subscripted text
+</summary>
+</member>
+<member name="P:ListML.HTML.style">
+<summary>
+Defines style information for a document
+</summary>
+</member>
+<member name="P:ListML.HTML.strong">
+<summary>
+Defines important text
+</summary>
+</member>
+<member name="P:ListML.HTML.strike">
+<summary>
+Defines strikethrough text
+Not supported in HTML5. Use &lt;del&gt; or &lt;s&gt; instead.
+</summary>
+</member>
+<member name="P:ListML.HTML.span">
+<summary>
+Defines a section in a document
+</summary>
+</member>
+<member name="P:ListML.HTML.source">
+<summary>
+Defines multiple media resources for media elements (&lt;video&gt; and &lt;audio&gt;)
+</summary>
+</member>
+<member name="P:ListML.HTML.small">
+<summary>
+Defines smaller text
+</summary>
+</member>
+<member name="P:ListML.HTML.select">
+<summary>
+Defines a drop-down list
+</summary>
+</member>
+<member name="P:ListML.HTML.section">
+<summary>
+Defines a section in a document
+</summary>
+</member>
+<member name="P:ListML.HTML.script">
+<summary>
+Defines a client-side script
+</summary>
+</member>
+<member name="P:ListML.HTML.samp">
+<summary>
+Defines sample output from a computer program
+</summary>
+</member>
+<member name="P:ListML.HTML.s">
+<summary>
+Defines text that is no longer correct
+</summary>
+</member>
+<member name="P:ListML.HTML.ruby">
+<summary>
+Defines a ruby annotation (for East Asian typography)
+</summary>
+</member>
+<member name="P:ListML.HTML.rt">
+<summary>
+Defines an explanation/pronunciation of characters (for East Asian typography)
+</summary>
+</member>
+<member name="P:ListML.HTML.rp">
+<summary>
+Defines what to show in browsers that do not support ruby annotations
+</summary>
+</member>
+<member name="P:ListML.HTML.q">
+<summary>
+Defines a short quotation
+</summary>
+</member>
+<member name="P:ListML.HTML.progress">
+<summary>
+Represents the progress of a task
+</summary>
+</member>
+<member name="P:ListML.HTML.pre">
+<summary>
+Defines preformatted text
+</summary>
+</member>
+<member name="P:ListML.HTML.param">
+<summary>
+Defines a parameter for an object
+</summary>
+</member>
+<member name="P:ListML.HTML.p">
+<summary>
+Defines a paragraph
+</summary>
+</member>
+<member name="P:ListML.HTML.output">
+<summary>
+Defines the result of a calculation
+</summary>
+</member>
+<member name="P:ListML.HTML.option">
+<summary>
+Defines an option in a drop-down list
+</summary>
+</member>
+<member name="P:ListML.HTML.optgroup">
+<summary>
+Defines a group of related options in a drop-down list
+</summary>
+</member>
+<member name="P:ListML.HTML.ol">
+<summary>
+Defines an ordered list
+</summary>
+</member>
+<member name="P:ListML.HTML.objectnode">
+<summary>
+Defines an embedded object
+</summary>
+</member>
+<member name="P:ListML.HTML.noscript">
+<summary>
+Defines an alternate content for users that do not support client-side scripts
+</summary>
+</member>
+<member name="P:ListML.HTML.nav">
+<summary>
+Defines navigation links
+</summary>
+</member>
+<member name="P:ListML.HTML.meter">
+<summary>
+Defines a scalar measurement within a known range (a gauge)
+</summary>
+</member>
+<member name="M:ListML.HTML.meta(Microsoft.FSharp.Collections.FSharpList{ListML.Core.KeyValue})">
+<summary>
+Defines metadata about an HTML document
+</summary>
+</member>
+<member name="P:ListML.HTML.menuitem">
+<summary>
+Defines a command/menu item that the user can invoke from a popup menu
+</summary>
+</member>
+<member name="P:ListML.HTML.menu">
+<summary>
+Defines a list/menu of commands
+</summary>
+</member>
+<member name="P:ListML.HTML.mark">
+<summary>
+Defines marked/highlighted text
+</summary>
+</member>
+<member name="P:ListML.HTML.map">
+<summary>
+Defines a client-side image-map
+</summary>
+</member>
+<member name="P:ListML.HTML.main">
+<summary>
+Specifies the main content of a document
+</summary>
+</member>
+<member name="P:ListML.HTML.link">
+<summary>
+Defines the relationship between a document and an external resource (most used to link to style sheets)
+</summary>
+</member>
+<member name="P:ListML.HTML.li">
+<summary>
+Defines a list item
+</summary>
+</member>
+<member name="P:ListML.HTML.legend">
+<summary>
+Defines a caption for a let fieldset = node &quot;fieldset&quot; element
+</summary>
+</member>
+<member name="P:ListML.HTML.label">
+<summary>
+Defines a label for an let input = node &quot;input&quot; element
+</summary>
+</member>
+<member name="P:ListML.HTML.keygen">
+<summary>
+Defines a key-pair generator field (for forms)
+</summary>
+</member>
+<member name="P:ListML.HTML.kbd">
+<summary>
+Defines keyboard input
+</summary>
+</member>
+<member name="P:ListML.HTML.ins">
+<summary>
+Defines a text that has been inserted into a document
+</summary>
+</member>
+<member name="P:ListML.HTML.input">
+<summary>
+Defines an input control
+</summary>
+</member>
+<member name="M:ListML.HTML.img(Microsoft.FSharp.Collections.FSharpList{ListML.Core.KeyValue})">
+<summary>
+Defines an image
+</summary>
+</member>
+<member name="P:ListML.HTML.iframe">
+<summary>
+Defines an inline frame
+</summary>
+</member>
+<member name="P:ListML.HTML.i">
+<summary>
+Defines a part of text in an alternate voice or mood
+</summary>
+</member>
+<member name="P:ListML.HTML.html">
+<summary>
+Defines the root of an HTML document
+</summary>
+</member>
+<member name="P:ListML.HTML.hr">
+<summary>
+Defines a thematic change in the content
+</summary>
+</member>
+<member name="P:ListML.HTML.header">
+<summary>
+Defines a header for a document or section
+</summary>
+</member>
+<member name="P:ListML.HTML.head">
+<summary>
+Defines information about the document
+</summary>
+</member>
+<member name="P:ListML.HTML.h6">
+<summary>
+Defines HTML headings
+</summary>
+</member>
+<member name="P:ListML.HTML.h5">
+<summary>
+Defines HTML headings
+</summary>
+</member>
+<member name="P:ListML.HTML.h4">
+<summary>
+Defines HTML headings
+</summary>
+</member>
+<member name="P:ListML.HTML.h3">
+<summary>
+Defines HTML headings
+</summary>
+</member>
+<member name="P:ListML.HTML.h2">
+<summary>
+Defines HTML headings
+</summary>
+</member>
+<member name="P:ListML.HTML.h1">
+<summary>
+Defines HTML headings
+</summary>
+</member>
+<member name="P:ListML.HTML.form">
+<summary>
+Defines an HTML form for user input
+</summary>
+</member>
+<member name="P:ListML.HTML.footer">
+<summary>
+Defines a footer for a document or section
+</summary>
+</member>
+<member name="P:ListML.HTML.figure">
+<summary>
+Specifies self-contained content
+</summary>
+</member>
+<member name="P:ListML.HTML.figcaption">
+<summary>
+Defines a caption for a let figure = node &quot;figure&quot; element
+</summary>
+</member>
+<member name="P:ListML.HTML.fieldset">
+<summary>
+Groups related elements in a form
+</summary>
+</member>
+<member name="P:ListML.HTML.embed">
+<summary>
+Defines a container for an external (non-HTML) application
+</summary>
+</member>
+<member name="P:ListML.HTML.em">
+<summary>
+Defines emphasized text
+</summary>
+</member>
+<member name="P:ListML.HTML.dt">
+<summary>
+Defines a term/name in a description list
+</summary>
+</member>
+<member name="P:ListML.HTML.dl">
+<summary>
+Defines a description list
+</summary>
+</member>
+<member name="P:ListML.HTML.div">
+<summary>
+Defines a section in a document
+</summary>
+</member>
+<member name="P:ListML.HTML.dialog">
+<summary>
+Defines a dialog box or window
+</summary>
+</member>
+<member name="P:ListML.HTML.dfn">
+<summary>
+Represents the defining instance of a term
+</summary>
+</member>
+<member name="P:ListML.HTML.details">
+<summary>
+Defines additional details that the user can view or hide
+</summary>
+</member>
+<member name="P:ListML.HTML.del">
+<summary>
+Defines text that has been deleted from a document
+</summary>
+</member>
+<member name="P:ListML.HTML.dd">
+<summary>
+Defines a description/value of a term in a description list
+</summary>
+</member>
+<member name="P:ListML.HTML.datalist">
+<summary>
+Specifies a list of pre-defined options for input controls
+</summary>
+</member>
+<member name="P:ListML.HTML.colgroup">
+<summary>
+Specifies a group of one or more columns in a table for formatting
+</summary>
+</member>
+<member name="P:ListML.HTML.col">
+<summary>
+Specifies column properties for each column within a &lt;colgroup&gt; element
+</summary>
+</member>
+<member name="P:ListML.HTML.code">
+<summary>
+Defines a piece of computer code
+</summary>
+</member>
+<member name="P:ListML.HTML.cite">
+<summary>
+Defines the title of a work
+</summary>
+</member>
+<member name="P:ListML.HTML.caption">
+<summary>
+Defines a table caption
+</summary>
+</member>
+<member name="P:ListML.HTML.canvas">
+<summary>
+Used to draw graphics, on the fly, via scripting (usually JavaScript)
+</summary>
+</member>
+<member name="P:ListML.HTML.button">
+<summary>
+Defines a clickable button
+</summary>
+</member>
+<member name="M:ListML.HTML.br(Microsoft.FSharp.Collections.FSharpList{ListML.Core.KeyValue})">
+<summary>
+Defines a single line break
+</summary>
+</member>
+<member name="P:ListML.HTML.body">
+<summary>
+Defines the document&apos;s body
+</summary>
+</member>
+<member name="P:ListML.HTML.blockquote">
+<summary>
+Defines a section that is quoted from another source
+</summary>
+</member>
+<member name="P:ListML.HTML.bdo">
+<summary>
+Overrides the current text direction
+</summary>
+</member>
+<member name="P:ListML.HTML.bdi">
+<summary>
+Isolates a part of text that might be formatted in a different direction from other text outside it
+</summary>
+</member>
+<member name="P:ListML.HTML.basenode">
+<summary>
+Specifies the base URL/target for all relative URLs in a document
+</summary>
+</member>
+<member name="P:ListML.HTML.b">
+<summary>
+Defines bold text
+</summary>
+</member>
+<member name="P:ListML.HTML.audio">
+<summary>
+Defines sound content
+</summary>
+</member>
+<member name="P:ListML.HTML.aside">
+<summary>
+Defines content aside from the page content
+</summary>
+</member>
+<member name="P:ListML.HTML.article">
+<summary>
+Defines an article
+</summary>
+</member>
+<member name="P:ListML.HTML.area">
+<summary>
+Defines an area inside an image-map
+</summary>
+</member>
+<member name="P:ListML.HTML.address">
+<summary>
+Defines contact information for the author/owner of a document
+</summary>
+</member>
+<member name="P:ListML.HTML.abbr">
+<summary>
+Defines an abbreviation or an acronym
+</summary>
+</member>
+<member name="P:ListML.HTML.a">
+<summary>
+Defines a hyperlink
+</summary>
+</member>
+<member name="P:ListML.HTML.doctype">
+<summary>
+Defines a doctype
+</summary>
+</member>
+</members>
+</doc>
