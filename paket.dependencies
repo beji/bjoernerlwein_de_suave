@@ -1,6 +1,7 @@
 source https://nuget.org/api/v2
 
 nuget Fake
+nuget ListML
 nuget Suave
 nuget AjaxMin
 nuget Fsharp.Formatting
