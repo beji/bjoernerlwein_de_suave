@@ -1,5 +1,4 @@
-FROM geoder101/fsharp-extended
-RUN npm install -g less
+FROM beji/fsharp-container
 RUN mkdir /app
 WORKDIR /app
 ADD . /app
