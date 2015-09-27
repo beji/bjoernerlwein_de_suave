@@ -13,8 +13,15 @@ open System.IO
 open Types
 open Templates
 
-let app mode : WebPart =
+let logRoute (context:HttpContext) =
 
+  "<<< " + (string context.request.url.PathAndQuery) + " from " + (string context.request.ipaddr)
+  |> Logger.logInfo
+
+  async.Return <| Some context
+
+let app mode : WebPart =
+    logRoute >>=
     choose [
         StaticfileRoutes.routes
         Posts.routes
@@ -26,7 +33,7 @@ let app mode : WebPart =
 [<EntryPoint>]
 let main argv =
 
-    Logger.logMsg "Starting Web Server"
+    Logger.logInfo "Starting Web Server"
 
     let mode =
         match argv.Length with

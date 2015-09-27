@@ -14,6 +14,10 @@ let logary =
   )
 let logger = logary.GetLogger("BjoernerlweinDe.main")
 
-let logMsg = Logger.debug logger
+let logMsg =
+  Logger.debug logger "logMsg is deprecated, use logDbg instead"
+  Logger.debug logger
+let logDbg = Logger.debug logger
+let logInfo = Logger.info logger
 
 let adapter = SuaveAdapter logger
