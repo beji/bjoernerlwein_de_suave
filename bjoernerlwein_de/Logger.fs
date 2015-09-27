@@ -8,7 +8,8 @@ open Suave.Logging
 let logary =
   withLogary' "BjoernerlweinDe" (
     // a new allow-all rule for 'console' with a 'console' target
-    withRule (Rule.createForTarget "console")
+    withRule (
+      {Rule.empty with target = "console"; level = Logary.LogLevel.Debug }) //No real need for the verbose log
     >> withTarget (Console.create Console.empty "console")
   )
 let logger = logary.GetLogger("BjoernerlweinDe.main")
