@@ -15,7 +15,14 @@ open Templates
 
 let logRoute (context:HttpContext) =
 
-  "<<< " + (string context.request.url.PathAndQuery) + " from " + (string context.request.ipaddr)
+  let useragent =
+    List.pick (fun tpl ->
+      match tpl with
+      | ("user-agent", x) -> Some(x)
+      | _ -> None
+      ) context.request.headers
+
+  "<<< " + (string context.request.url.PathAndQuery) + " from " + (string context.request.ipaddr) + " | " + useragent
   |> Logger.logInfo
 
   async.Return <| Some context
