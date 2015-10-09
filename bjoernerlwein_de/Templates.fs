@@ -15,7 +15,7 @@ let page mode =
       | Debug -> ["normalize.css"; "style.css"]
       | Production -> ["style.min.css"]
       |> List.fold (fun acc elem ->
-          acc + link [href ("/css/" + elem + "?v=" + timestamp); attr "rel" "stylesheet"] []
+          acc + link [href ("/css/" + elem + "?v=" + timestamp);  "rel", "stylesheet"] []
         ) ""
 
     let scripts =
@@ -23,60 +23,60 @@ let page mode =
       | Debug -> ["angular.js";"angular.route.js";"angular.viewhead.js";"script.js"];
       | Production -> ["script.min.js"]
       |> List.fold (fun acc elem ->
-          acc + script [attr "src" ("/js/" + elem + "?v=" + timestamp)] [""]
+          acc + script ["src", ("/js/" + elem + "?v=" + timestamp)] [""]
         ) ""
 
     doctype +
-    html [attr "lang" "de"; attr "ng-app" "bjoernerlweinde"] [
+    html ["lang","de"; "ng-app","bjoernerlweinde"] [
       head [] [
-        meta [attr "charset" "UTF-8"]
-        title [attr "ng-bind-template" "Bjoernerlwein.de | {{viewTitle}}"] ["Bjoernerlwein.de"]
+        meta ["charset", "UTF-8"]
+        title ["ng-bind-template", "Bjoernerlwein.de | {{viewTitle}}"] ["Bjoernerlwein.de"]
         stylesheets
-        link [href "http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic,700italic"; attr "rel" "stylesheet"; attr "type" "text/css"] []
+        link [href "http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic,700italic";  "rel", "stylesheet";  "type", "text/css"] []
         scripts
         ]
       body [] [
         div [classAttr "sidebar"] [
           header [] [
             h1 [] [
-              a [attr "ng-href" "/#/"; href "/"] ["Bjoernerlwein.de"]]
+              a ["ng-href", "/#/"; href "/"] ["Bjoernerlwein.de"]]
             small [classAttr "sub-header"] ["{{viewTitle}}"]]
-          nav [attr "data-ng-controller" "staticPagesController"; attr "data-ng-init" "index()"; classAttr "navigation"] [
+          nav ["data-ng-controller", "staticPagesController";  "data-ng-init", "index()"; classAttr "navigation"] [
             h2 [] ["Pages"]
             ul [] [
-              li [attr "ng-repeat" "page in pages"] [
+              li ["ng-repeat", "page in pages"] [
                 a [href "/#/staticpage/{{page.id}}"] ["{{page.title}}"]]]]
           footer [] [
-            a [href "http://creativecommons.org/licenses/by-sa/4.0/"; attr "rel" "license"] [
-              img [src "http://i.creativecommons.org/l/by-sa/4.0/88x31.png"; alt "Creative Commons License"; attr "style" "border-width: 0;"]]
+            a [href "http://creativecommons.org/licenses/by-sa/4.0/";  "rel", "license"] [
+              img [src "http://i.creativecommons.org/l/by-sa/4.0/88x31.png"; alt "Creative Commons License";  "style", "border-width: 0;"]]
             br []
             span [] ["bjoernerlwein.de"]
             " by "
-            a [href "http://bjoernerlwein.de"; attr "rel" "cc:attributionURL"] ["Björn Erlwein"]
+            a [href "http://bjoernerlwein.de";  "rel", "cc:ibutionURL"] ["Björn Erlwein"]
             " is licensed under a "
-            a [href "http://creativecommons.org/licenses/by-sa/4.0/"; attr "rel" "license"] ["Creative Commons Attribution-ShareAlike 4.0
+            a [href "http://creativecommons.org/licenses/by-sa/4.0/";  "rel", "license"] ["Creative Commons Attribution-ShareAlike 4.0
               International License"]
             "."]]
-        div [classAttr "content"; attr "ng-view" "ng-view"] []]]
+        div [classAttr "content";  "ng-view", "ng-view"] [""]]]
 
 let post =
-  div [attr "data-ng-controller" "postsController"; attr "data-ng-init" "show()"] [
-    article [attr "id" "{{post.id}}"] [
-      h1 [attr "view-title" "view-title"] ["{{post.title}}"]
+  div ["data-ng-controller", "postsController";  "data-ng-init", "show()"] [
+    article ["id", "{{post.id}}"] [
+      h1 ["view-title", "view-title"] ["{{post.title}}"]
       small [] ["{{toDateString(post.date)}}"]
-      div [attr "ng-bind-html" "to_trusted(post.content)"] [""]]]
+      div ["ng-bind-html", "to_trusted(post.content)"] [""]]]
 
 let posts =
-  div [attr "data-ng-controller" "postsController"; attr "data-ng-init" "index()"] [
+  div ["data-ng-controller", "postsController";  "data-ng-init", "index()"] [
     node "view-title" [] ["Posts"]
-    article [attr "id" "{{post.id}}"; attr "ng-repeat" "post in posts"] [
+    article ["id", "{{post.id}}";  "ng-repeat", "post in posts"] [
       h1 [] [
         a [href "#/post/{{post.id}}"] ["{{post.title}}"]]
       small [] ["{{toDateString(post.date)}}"]
-      div [attr "ng-bind-html" "to_trusted(post.content)"] [""]]]
+      div ["ng-bind-html", "to_trusted(post.content)"] [""]]]
 
 let staticpage =
-  div [attr "data-ng-controller" "staticPagesController"; attr "data-ng-init" "show()"] [
-    article [attr "id" "{{page.id}}"] [
-      h1 [attr "view-title" "view-title"] ["{{page.title}}"]
-      div [attr "ng-bind-html" "to_trusted(page.content)"] [""]]]
+  div ["data-ng-controller", "staticPagesController";  "data-ng-init", "show()"] [
+    article ["id", "{{page.id}}"] [
+      h1 ["view-title", "view-title"] ["{{page.title}}"]
+      div ["ng-bind-html", "to_trusted(page.content)"] [""]]]
