@@ -23,7 +23,7 @@ let page mode =
       | Debug -> ["angular.js";"angular.route.js";"angular.viewhead.js";"script.js"];
       | Production -> ["script.min.js"]
       |> List.fold (fun acc elem ->
-          acc + script ["src", ("/js/" + elem + "?v=" + timestamp)] [""]
+          acc + script ["src", ("/js/" + elem + "?v=" + timestamp); "async", "true"] [""]
         ) ""
 
     doctype +
