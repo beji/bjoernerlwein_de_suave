@@ -4,10 +4,6 @@ open Types
 open ListML.Core
 open ListML.HTML
 
-let timestamp =
-    let zone = System.TimeZone.CurrentTimeZone.GetUtcOffset System.DateTime.Now
-    System.DateTime.UtcNow.ToString("yyyyMMddHHmmss")
-
 let page mode =
 
     let stylesheets =
@@ -15,7 +11,7 @@ let page mode =
       | Debug -> ["normalize.css"; "style.css"]
       | Production -> ["style.min.css"]
       |> List.fold (fun acc elem ->
-          acc + link [href ("/css/" + elem + "?v=" + timestamp);  "rel", "stylesheet"] []
+          acc + link [href ("/css/" + elem);  "rel", "stylesheet"] []
         ) ""
 
     let scripts =
@@ -23,7 +19,7 @@ let page mode =
       | Debug -> ["angular.js";"angular.route.js";"angular.viewhead.js";"script.js"];
       | Production -> ["script.min.js"]
       |> List.fold (fun acc elem ->
-          acc + script ["src", ("/js/" + elem + "?v=" + timestamp); "async", "true"] [""]
+          acc + script ["src", ("/js/" + elem); "async", "true"] [""]
         ) ""
 
     doctype +

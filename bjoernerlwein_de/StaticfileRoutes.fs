@@ -7,8 +7,7 @@ open Suave.Http.Applicatives
 open Suave.Http.RequestErrors
 open Suave.Utils
 open System.IO
-
-let expireHead = Writers.setHeader "Cache-Control" ("max-age=" + (string (60*60*24*30)))
+open Suave.Types
 
 let routes =
     choose [
@@ -16,10 +15,10 @@ let routes =
         GET >>= path "/js/angular.route.js" >>= Files.file "./static/bower/angular-route/angular-route.js"
         GET >>= path "/js/angular.viewhead.js" >>= Files.file "./static/bower/angularjs-viewhead/angularjs-viewhead.js"
         GET >>= path "/js/script.js" >>= Files.file "./static/js/script.js"
-        GET >>= path "/js/script.min.js" >>= expireHead >>= Files.file "./static/js/script.min.js"
+        GET >>= path "/js/script.min.js" >>= Files.file "./static/js/script.min.js"
         GET >>= path "/css/normalize.css" >>= Files.file "./static/bower/normalize-css/normalize.css"
         pathScan "/css/%s" (fun (file) ->
             let path = "./static/css/" + file
             match File.Exists path with
             | false -> NOT_FOUND "404 not found"
-            | true -> Files.file path)] >>= expireHead
+            | true -> Files.file path)]

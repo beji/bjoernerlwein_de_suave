@@ -27,15 +27,37 @@ let logRoute (context:HttpContext) =
 
   async.Return <| Some context
 
+let MD5Hash (input : string) =
+   use md5 = System.Security.Cryptography.MD5.Create()
+   input
+   |> System.Text.Encoding.ASCII.GetBytes
+   |> md5.ComputeHash
+   |> Seq.map (fun c -> c.ToString("X2"))
+   |> Seq.reduce (+)
+
+let setEtag (context:HttpContext) =
+    let timestamp = System.DateTime.UtcNow.ToString("yyyyMMddHHmmss")
+    let path = context.request.url.LocalPath
+    printfn "%s" context.request.url.LocalPath
+    let key = "ETag"
+    let value = timestamp + path |> MD5Hash
+    { context with response = { context.response with headers = (key, value) :: (context.response.headers |> List.filter (fun (k,_) -> k <> key))  } }
+    |> succeed
+
+let expireHead = Writers.setHeader "Cache-Control" ("max-age=" + (string (60*60*24*30)))
+
 let app mode : WebPart =
-    logRoute >>=
-    choose [
-        StaticfileRoutes.routes
-        Posts.routes
-        Staticpages.routes
-        Sitemap.route
-        GET >>= path "/" >>= OK (page mode)
-        NOT_FOUND "404 not found"]
+
+  let routes = [StaticfileRoutes.routes
+                Posts.routes
+                Staticpages.routes
+                Sitemap.route
+                GET >>= path "/" >>= OK (page mode)
+                NOT_FOUND "404 not found"]
+
+  match mode with
+  | Debug -> logRoute >>= choose routes
+  | Production -> logRoute >>= expireHead >>= setEtag >>= choose routes
 
 [<EntryPoint>]
 let main argv =
