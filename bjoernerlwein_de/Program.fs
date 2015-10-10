@@ -38,7 +38,6 @@ let MD5Hash (input : string) =
    |> Seq.reduce (+)
 
 let setEtag (context:HttpContext) =
-    let timestamp = System.DateTime.UtcNow.ToString("yyyyMMddHHmmss")
     let path = context.request.url.LocalPath
     printfn "%s" context.request.url.LocalPath
     let key = "ETag"
