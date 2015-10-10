@@ -13,6 +13,8 @@ open System.IO
 open Types
 open Templates
 
+let timestamp = System.DateTime.UtcNow.ToString("yyyyMMddHHmmss")
+
 let logRoute (context:HttpContext) =
 
   let useragent =
