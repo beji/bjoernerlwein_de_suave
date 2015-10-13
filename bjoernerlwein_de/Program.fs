@@ -23,8 +23,7 @@ let logRoute (context:HttpContext) =
       | ("user-agent", x) -> Some(x)
       | _ -> None
       ) context.request.headers
-
-  "<<< " + (string context.request.url.PathAndQuery) + " from " + (string context.request.ipaddr) + " | " + useragent
+  "<<< " + (string context.request.url.PathAndQuery) + " from " + (string context.clientIpTrustProxy) + " | " + useragent
   |> Logger.logInfo
 
   async.Return <| Some context
