@@ -38,7 +38,6 @@ let MD5Hash (input : string) =
 
 let setEtag (context:HttpContext) =
     let path = context.request.url.LocalPath
-    printfn "%s" context.request.url.LocalPath
     let key = "ETag"
     let value = timestamp + path |> MD5Hash
     { context with response = { context.response with headers = (key, value) :: (context.response.headers |> List.filter (fun (k,_) -> k <> key))  } }
