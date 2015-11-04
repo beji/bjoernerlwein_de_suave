@@ -39,7 +39,6 @@ Thumbs.db
 #dotCover
 *.dotCover
 
-
 build/
 
 bjoernerlwein_de/static/bower/
