@@ -1,7 +1,0 @@
-web:
-    build: .
-    command: ./build.sh
-    environment:
-        - VIRTUAL_HOST=bjoernerlwein.de
-    ports:
-        - "8083:8083"
