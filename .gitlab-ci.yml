@@ -8,3 +8,4 @@ bjoernerlweinde:
     - docker build -t bjoernerlweinde .
     - docker save -o bde.tar bjoernerlweinde
     - scp bde.tar $KUB_MASTER:/tmp/bde.tar
+    - rm bde.tar
