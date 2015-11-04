@@ -5,3 +5,6 @@ bjoernerlweinde:
     - bower install --allow-root
     - lessc bjoernerlwein_de/static/css/style.less > bjoernerlwein_de/static/css/style.css
     - mono packages/FAKE/tools/FAKE.exe buildscripts/release.fsx BuildRelease
+    - docker build -t bjoernerlweinde .
+    - docker save -o bde.tar bjoernerlweinde
+    - scp bde.tar $KUB_MASTER:/tmp/bde.tar
