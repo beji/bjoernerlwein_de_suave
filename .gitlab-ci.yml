@@ -7,5 +7,7 @@ bjoernerlweinde:
     - mono packages/FAKE/tools/FAKE.exe buildscripts/release.fsx BuildRelease
     - docker build -t bjoernerlweinde .
     - docker save -o bde.tar bjoernerlweinde
-    - scp bde.tar $KUB_MASTER:/home/core/bde.tar
-    - rm bde.tar
+    - gzip bde.tar
+    - scp bde.tar.gz $KUB_MASTER:/home/core/bde.tar.gz
+    - ssh $KUB_MASTER /home/core/distribute.sh
+    - rm bde.tar.gz
