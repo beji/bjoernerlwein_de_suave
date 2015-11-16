@@ -8,6 +8,6 @@ bjoernerlweinde:
     - docker build -t bjoernerlweinde .
     - docker save -o bde.tar bjoernerlweinde
     - gzip bde.tar
-    - scp bde.tar.gz $KUB_MASTER:/home/core/bde.tar.gz
-    - ssh $KUB_MASTER /home/core/distribute.sh
+    - scp -P 2222 bde.tar.gz $KUB_MASTER:/home/core/bde.tar.gz
+    - ssh -p 2222 $KUB_MASTER /home/core/distribute.sh
     - rm bde.tar.gz
