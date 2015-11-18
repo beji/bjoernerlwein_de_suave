@@ -40,6 +40,18 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.fs" />
+    <Compile Include="Types.fs" />
+    <Compile Include="Logger.fs" />
+    <Compile Include="Templates.fs" />
+    <Compile Include="StaticfileRoutes.fs" />
+    <Compile Include="Posts.fs" />
+    <Compile Include="Staticpages.fs" />
+    <Compile Include="Sitemap.fs" />
+    <Compile Include="Program.fs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\..\Microsoft SDKs\F#\4.0\Framework\v4.0\Microsoft.FSharp.Targets" />
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v3.5'">
       <ItemGroup>
@@ -369,16 +381,4 @@
       </ItemGroup>
     </When>
   </Choose>
-  <ItemGroup>
-    <Compile Include="AssemblyInfo.fs" />
-    <Compile Include="Types.fs" />
-    <Compile Include="Logger.fs" />
-    <Compile Include="Templates.fs" />
-    <Compile Include="StaticfileRoutes.fs" />
-    <Compile Include="Posts.fs" />
-    <Compile Include="Staticpages.fs" />
-    <Compile Include="Sitemap.fs" />
-    <Compile Include="Program.fs" />
-  </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath32)\..\Microsoft SDKs\F#\4.0\Framework\v4.0\Microsoft.FSharp.Targets" />
 </Project>

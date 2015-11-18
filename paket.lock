@@ -2,7 +2,7 @@ NUGET
   remote: https://nuget.org/api/v2
   specs:
     AjaxMin (5.14.5506.26202)
-    FAKE (4.9.1)
+    FAKE (4.9.3)
     FSharp.Actor-logary (3.4.2)
       FSharp.Core (>= 3.1.2.5)
     FSharp.Compiler.Service (1.4.0.6)
