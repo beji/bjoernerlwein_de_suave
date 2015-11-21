@@ -28,7 +28,7 @@ let page mode =
         meta ["charset", "UTF-8"]
         title ["ng-bind-template", "Bjoernerlwein.de | {{viewTitle}}"] ["Bjoernerlwein.de"]
         stylesheets
-        link [href "http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic,700italic";  "rel", "stylesheet";  "type", "text/css"] []
+        link [href "//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic,700italic";  "rel", "stylesheet";  "type", "text/css"] []
         scripts
         ]
       body [] [
@@ -43,14 +43,14 @@ let page mode =
               li ["ng-repeat", "page in pages"] [
                 a [href "/#/staticpage/{{page.id}}"] ["{{page.title}}"]]]]
           footer [] [
-            a [href "http://creativecommons.org/licenses/by-sa/4.0/";  "rel", "license"] [
-              img [src "http://i.creativecommons.org/l/by-sa/4.0/88x31.png"; alt "Creative Commons License";  "style", "border-width: 0;"]]
+            a [href "//creativecommons.org/licenses/by-sa/4.0/";  "rel", "license"] [
+              img [src "//i.creativecommons.org/l/by-sa/4.0/88x31.png"; alt "Creative Commons License";  "style", "border-width: 0;"]]
             br []
             span [] ["bjoernerlwein.de"]
             " by "
-            a [href "http://bjoernerlwein.de";  "rel", "cc:ibutionURL"] ["Björn Erlwein"]
+            a [href "//bjoernerlwein.de";  "rel", "cc:ibutionURL"] ["Björn Erlwein"]
             " is licensed under a "
-            a [href "http://creativecommons.org/licenses/by-sa/4.0/";  "rel", "license"] ["Creative Commons Attribution-ShareAlike 4.0
+            a [href "//creativecommons.org/licenses/by-sa/4.0/";  "rel", "license"] ["Creative Commons Attribution-ShareAlike 4.0
               International License"]
             "."]]
         div [classAttr "content";  "ng-view", "ng-view"] [""]]]
