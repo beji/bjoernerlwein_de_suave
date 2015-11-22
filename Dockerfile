@@ -1,6 +1,6 @@
-FROM alpine
-RUN echo "@testing http://nl.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
-RUN apk --update add mono@testing
+FROM voidlinux/voidlinux
+RUN xbps-install -Sy
+RUN xbps-install mono
 RUN mkdir /app
 WORKDIR /app
 ADD ./build /app
