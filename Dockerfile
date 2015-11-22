@@ -1,5 +1,4 @@
-FROM voidlinux/voidlinux
-RUN xbps-install -Syuv mono
+FROM frolvlad/alpine-mono
 RUN mkdir /app
 WORKDIR /app
 ADD ./build /app
