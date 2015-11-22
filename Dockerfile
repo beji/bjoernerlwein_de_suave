@@ -1,6 +1,5 @@
 FROM voidlinux/voidlinux
-RUN xbps-install -Sy
-RUN xbps-install mono
+RUN xbps-install -Syuv mono
 RUN mkdir /app
 WORKDIR /app
 ADD ./build /app
