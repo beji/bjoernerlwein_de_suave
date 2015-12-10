@@ -81,7 +81,6 @@ let main argv =
             { defaultConfig with
                 logger   = Logger.adapter
                 bindings = [HttpBinding.mk HTTP (System.Net.IPAddress.Parse "0.0.0.0") 8083us]
-                tcpServerFactory = Suave.LibUv.Tcp.LibUvServerFactory()
             }
 
     startWebServer webConfig <| app mode
