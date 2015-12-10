@@ -48,7 +48,7 @@ let page mode =
             br []
             span [] ["bjoernerlwein.de"]
             " by "
-            a [href "//bjoernerlwein.de";  "rel", "cc:ibutionURL"] ["Björn Erlwein"]
+            a [href "//bjoernerlwein.de";  "rel", "cc:attributionURL"] ["Björn Erlwein"]
             " is licensed under a "
             a [href "//creativecommons.org/licenses/by-sa/4.0/";  "rel", "license"] ["Creative Commons Attribution-ShareAlike 4.0
               International License"]
