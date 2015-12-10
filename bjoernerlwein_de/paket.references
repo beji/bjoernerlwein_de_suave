@@ -5,3 +5,4 @@ Logary
 Logary.Adapters.Suave
 Newtonsoft.Json.Fsharp
 ListML
+Suave.LibUv

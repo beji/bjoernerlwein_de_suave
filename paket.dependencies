@@ -8,3 +8,4 @@ nuget Fsharp.Formatting
 nuget Logary
 nuget Logary.Adapters.Suave
 nuget Newtonsoft.Json.Fsharp
+nuget Suave.LibUv
