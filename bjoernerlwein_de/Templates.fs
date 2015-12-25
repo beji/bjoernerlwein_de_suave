@@ -16,7 +16,7 @@ let page mode =
 
     let scripts =
       match mode with
-      | Debug -> ["angular.js";"angular.route.js";"angular.viewhead.js";"script.js"];
+      | Debug -> ["vue.js";"script.js"];
       | Production -> ["script.min.js"]
       |> List.fold (fun acc elem ->
           acc + script ["src", ("/js/" + elem); "async", "true"] [""]
