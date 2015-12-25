@@ -14,9 +14,7 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "~1.4.4",
-    "angular-route": "~1.4.4",
-    "angularjs-viewhead": "~0.0.1",
-    "normalize-css": "~3.0.3"
+    "normalize-css": "~3.0.3",
+    "vue": "~1.0.13"
   }
 }
