@@ -19,8 +19,15 @@ let page mode =
       | Debug -> ["vue.js";"script.js"];
       | Production -> ["script.min.js"]
       |> List.fold (fun acc elem ->
-          acc + script ["src", ("/js/" + elem); "async", "true"] [""]
+          acc + script ["src", ("/js/" + elem)] [""]
         ) ""
+        
+    let vueDebugMode = 
+      match mode with
+      | Production -> ""
+      | Debug ->
+        script ["type", "text/javascript"] ["Vue.config.debug = true;"]
+        
 
     doctype +
     html ["lang","de"; "ng-app","bjoernerlweinde"] [
@@ -30,6 +37,7 @@ let page mode =
         stylesheets
         link [href "//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic,700italic";  "rel", "stylesheet";  "type", "text/css"] []
         scripts
+        vueDebugMode
         ]
       body [] [
         div [classAttr "sidebar"] [
