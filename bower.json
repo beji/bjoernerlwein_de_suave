@@ -15,6 +15,7 @@
   ],
   "dependencies": {
     "normalize-css": "~3.0.3",
-    "vue": "~1.0.13"
+    "vue": "~1.0.13",
+    "nanoajax": "~0.3.1"
   }
 }
