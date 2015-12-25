@@ -11,9 +11,7 @@ open Suave.Types
 
 let routes =
     choose [
-        GET >>= path "/js/angular.js" >>= Files.file "./static/bower/angular/angular.js"
-        GET >>= path "/js/angular.route.js" >>= Files.file "./static/bower/angular-route/angular-route.js"
-        GET >>= path "/js/angular.viewhead.js" >>= Files.file "./static/bower/angularjs-viewhead/angularjs-viewhead.js"
+        GET >>= path "/js/vue.js" >>= Files.file "./static/bower/vue/dist/vue.js"
         GET >>= path "/js/script.js" >>= Files.file "./static/js/script.js"
         GET >>= path "/js/script.min.js" >>= Files.file "./static/js/script.min.js"
         GET >>= path "/css/normalize.css" >>= Files.file "./static/bower/normalize-css/normalize.css"
