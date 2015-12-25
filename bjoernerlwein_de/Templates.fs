@@ -16,7 +16,7 @@ let page mode =
 
     let scripts =
       match mode with
-      | Debug -> ["vue.js";"script.js"];
+      | Debug -> ["nanoajax.js"; "vue.js";"script.js"];
       | Production -> ["script.min.js"]
       |> List.fold (fun acc elem ->
           acc + script ["src", ("/js/" + elem)] [""]
@@ -30,26 +30,38 @@ let page mode =
         
 
     doctype +
-    html ["lang","de"; "ng-app","bjoernerlweinde"] [
+    html ["lang","de"] [
       head [] [
         meta ["charset", "UTF-8"]
-        title ["ng-bind-template", "Bjoernerlwein.de | {{viewTitle}}"] ["Bjoernerlwein.de"]
+        title ["id", "title"] ["Bjoernerlwein.de"]
         stylesheets
         link [href "//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic,700italic";  "rel", "stylesheet";  "type", "text/css"] []
-        scripts
-        vueDebugMode
-        ]
+        
+        script ["type", "x-template"; "id", "staticpagelist-tpl"] [
+          ul [] [
+            li ["v-for" ,"page in staticpages"] [
+              a [href "/#/staticpage/{{page.id}}"] ["{{page.title}}"]]]]
+        script ["type", "x-template"; "id", "post-tpl"] [
+          article [] [
+            h1 [] ["{{title}}"]
+            small [] ["{{date}}"]
+            div [] ["{{{content}}}"]]]              
+        script ["type", "x-template"; "id", "posts-index-tpl"] [
+          div [] [
+            article ["v-for", "post in posts"] [
+              h1 [] [
+                a [href "#/post/{{post.id}}"] ["{{post.title}}"]]
+              small [] ["{{post.date}}"]
+              div [] ["{{{post.content}}}"]]]]]
       body [] [
         div [classAttr "sidebar"] [
           header [] [
             h1 [] [
-              a ["ng-href", "/#/"; href "/"] ["Bjoernerlwein.de"]]
-            small [classAttr "sub-header"] ["{{viewTitle}}"]]
-          nav ["data-ng-controller", "staticPagesController";  "data-ng-init", "index()"; classAttr "navigation"] [
+              a [href "/#"] ["Bjoernerlwein.de"]]
+            small [classAttr "sub-header"; "id", "pgtitle"] [""]]
+          nav [classAttr "navigation"] [
             h2 [] ["Pages"]
-            ul [] [
-              li ["ng-repeat", "page in pages"] [
-                a [href "/#/staticpage/{{page.id}}"] ["{{page.title}}"]]]]
+            div ["id", "staticpageslist"] [""]]
           footer [] [
             a [href "//creativecommons.org/licenses/by-sa/4.0/";  "rel", "license"] [
               img [src "//i.creativecommons.org/l/by-sa/4.0/88x31.png"; alt "Creative Commons License";  "style", "border-width: 0;"]]
@@ -59,9 +71,12 @@ let page mode =
             a [href "//bjoernerlwein.de";  "rel", "cc:attributionURL"] ["Björn Erlwein"]
             " is licensed under a "
             a [href "//creativecommons.org/licenses/by-sa/4.0/";  "rel", "license"] ["Creative Commons Attribution-ShareAlike 4.0
-              International License"]
+              International License"] 
             "."]]
-        div [classAttr "content";  "ng-view", "ng-view"] [""]]]
+        div [classAttr "content"; "id", "app"] [
+          node "component" [":is", "currentView"] [""]]
+        scripts
+        vueDebugMode]]
 
 let post =
   div ["data-ng-controller", "postsController";  "data-ng-init", "show()"] [
