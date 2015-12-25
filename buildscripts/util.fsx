@@ -66,9 +66,7 @@ Target "CopyContent" (fun _ ->
 
 Target "JsMin" (fun _ ->
     let jsDir = buildDir + "/static/"
-    File.ReadAllText (jsDir + "bower/angular/angular.js")
-    |> append (File.ReadAllText (jsDir + "/bower/angular-route/angular-route.js"))
-    |> append (File.ReadAllText (jsDir + "/bower/angularjs-viewhead/angularjs-viewhead.js"))
+    File.ReadAllText (jsDir + "bower/vue/vue.js")
     |> append (File.ReadAllText (jsDir + "/js/script.js"))
     |> compressJs
     |> writeToFile (jsDir + "js/script.min.js")
