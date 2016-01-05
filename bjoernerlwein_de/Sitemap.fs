@@ -1,12 +1,12 @@
 ﻿module Sitemap
 
-
-open Suave.Http
-open Suave.Http.Applicatives
-open Suave.Http.Successful
+open Suave.Successful
 open Staticpages
 open Posts
 open Types
+open Suave.Files
+open Suave.Filters
+open Suave.Operators
 
 let generateRoutesFromContentList contentList listType =
     let fixedPart = "http://bjoernerlwein.de/#/"
@@ -20,4 +20,4 @@ let urlList =
     List.concat [ ["http://bjoernerlwein.de"]; generateRoutesFromContentList staticpageCollection ListType.StaticPages; generateRoutesFromContentList postCollection ListType.Posts]
     |> String.concat "\n"
 
-let route = GET >>= path "/sitemap" >>= OK urlList
+let route = GET >=> path "/sitemap" >=> OK urlList
