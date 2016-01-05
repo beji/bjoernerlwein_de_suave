@@ -1,10 +1,10 @@
 ﻿module Posts
 
 open Suave
-open Suave.Http
-open Suave.Http.Applicatives
-open Suave.Http.Successful
-open Suave.Http.RequestErrors
+open Suave.Successful
+open Suave.RequestErrors
+open Suave.Operators
+open Suave.Filters
 open Suave.Utils
 open System.IO
 open System.IO
@@ -27,10 +27,10 @@ let postCollection =
 
 let routes =
     choose [
-        GET >>= path "/posts/index" >>= Writers.setMimeType "text/html" >>= OK Templates.posts
-        GET >>= path "/posts" >>= Writers.setMimeType "application/json" >>= OK (JsonConvert.SerializeObject postCollection)
-        GET >>= path "/posts/show" >>= Writers.setMimeType "text/html" >>= OK Templates.post
-        GET >>= pathScan "/post/%s" (fun (id) ->
+        GET >=> path "/posts/index" >=> Writers.setMimeType "text/html" >=> OK Templates.posts
+        GET >=> path "/posts" >=> Writers.setMimeType "application/json" >=> OK (JsonConvert.SerializeObject postCollection)
+        GET >=> path "/posts/show" >=> Writers.setMimeType "text/html" >=> OK Templates.post
+        GET >=> pathScan "/post/%s" (fun (id) ->
             try
                 postCollection
                 |> List.find (fun (item) ->
@@ -39,4 +39,4 @@ let routes =
                 |> OK
             with
             | :? System.Collections.Generic.KeyNotFoundException as msg -> NOT_FOUND "404 not found")
-            >>= Writers.setMimeType "application/json"]
+            >=> Writers.setMimeType "application/json"]
