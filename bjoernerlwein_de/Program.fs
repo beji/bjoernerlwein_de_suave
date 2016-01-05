@@ -2,13 +2,12 @@
 // See the 'F# Tutorial' project for more help.
 
 open Suave
-open Suave.Http
-open Suave.Http.Applicatives
-open Suave.Http.Successful
-open Suave.Http.RequestErrors
+open Suave.Successful
+open Suave.RequestErrors
 open Suave.Web
-open Suave.Types
 open Suave.Utils
+open Suave.Filters
+open Suave.Operators
 open System.IO
 open Types
 open Templates
@@ -51,12 +50,12 @@ let app mode : WebPart =
                 Posts.routes
                 Staticpages.routes
                 Sitemap.route
-                GET >>= path "/" >>= OK (page mode)
+                GET >=> path "/" >=> OK (page mode)
                 NOT_FOUND "404 not found"]
 
   match mode with
-  | Debug -> logRoute >>= choose routes
-  | Production -> logRoute >>= expireHead >>= setEtag >>= choose routes
+  | Debug -> logRoute >=> choose routes
+  | Production -> logRoute >=> expireHead >=> setEtag >=> choose routes
 
 [<EntryPoint>]
 let main argv =
