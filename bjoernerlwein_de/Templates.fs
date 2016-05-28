@@ -65,8 +65,8 @@ let page mode =
               tfoot [] [
                 td [] [
                   button ["type", "button"; "v-on:click", "submit()"] ["Dann mach mal"]]]]
-            ol ["v-for", "result in results"; "class", "result-list"] [
-              li [] [
+            ol ["class", "result-list"] [
+              li ["v-for", "result in results";] [
                 strong [] ["{{result.name}}"]
                 " spielt heute: "
                 strong [] ["{{result.race}}"]]]]]]
