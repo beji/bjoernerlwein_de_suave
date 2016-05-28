@@ -95,9 +95,24 @@ h1{
   }
 }
 
-.content article{
-  border-bottom: 1px solid @light-grey;
-  max-width: 80rem;
+.content {
+  article{
+    border-bottom: 1px solid @light-grey;
+    max-width: 80rem;
+  }
+  pre {
+    max-width: 60%;
+    overflow: visible;
+    &:before{
+      content: 'code';
+      text-transform: uppercase;
+      display: block;
+      font-size: 80%;
+    }
+    code{
+      border: 1px solid lighten(@linkcolor, 30%);
+    }
+  }
 }
 
 footer{
