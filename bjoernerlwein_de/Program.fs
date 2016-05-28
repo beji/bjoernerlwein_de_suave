@@ -46,16 +46,19 @@ let expireHead = Writers.setHeader "Cache-Control" ("max-age=" + (string (60*60*
 
 let app mode : WebPart =
 
-  let routes = [StaticfileRoutes.routes
-                Posts.routes
-                Staticpages.routes
-                Sitemap.route
-                GET >=> path "/" >=> OK (page mode)
-                NOT_FOUND "404 not found"]
-
+  let routes =
+    choose [
+        POST >=> TwilightImperium.routes
+        GET >=> choose [StaticfileRoutes.routes
+                        Posts.routes
+                        Staticpages.routes
+                        Sitemap.route
+                        path "/" >=> OK (page mode)
+                        NOT_FOUND "404 not found"]
+    ]
   match mode with
-  | Debug -> logRoute >=> choose routes
-  | Production -> logRoute >=> expireHead >=> setEtag >=> choose routes
+  | Debug -> logRoute >=> routes
+  | Production -> logRoute >=> expireHead >=> setEtag >=> routes
 
 [<EntryPoint>]
 let main argv =

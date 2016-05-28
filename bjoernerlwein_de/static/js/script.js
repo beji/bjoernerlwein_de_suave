@@ -204,6 +204,48 @@
       }
 
     }
+  });
+  
+  Vue.component('twilightimperium', {
+    template: '#ti-tpl',
+    data: function() {
+      return {
+        slots: [],
+        results: []
+      }
+    },
+    ready: function(){
+      for (var i = 0; i < 8; i++){
+        this.slots.push(i);
+      }      
+    },
+    methods: {
+      submit: function() {
+        var _this = this;
+        var players = Array.prototype.slice.call(document.getElementsByClassName("ti-player")).map(function(elem){
+          return elem.value;
+        }).filter(function(name){
+          return name != "";
+        }).join("|");
+        
+        if(players !== '') {
+          ajax({
+            url: '/ti',
+            method: 'POST',
+            body: 'players=' + players 
+          }, function(code, responseText, request) {
+            if (code === 200) {
+              var resp = JSON.parse(responseText);
+              console.log(resp);
+              _this.results = resp;
+
+            } else {
+              //location.hash = '/';
+            }
+          });          
+        }
+      }
+    }
   })
 
   var app = new Vue({
@@ -220,6 +262,8 @@
       app.currentView = 'post';
     } else if (path === 'staticpage') {
       app.currentView = 'staticpage';
+    } else if (path === 'ti') {
+      app.currentView = 'twilightimperium';
     } else {
       app.currentView = 'posts';
     }

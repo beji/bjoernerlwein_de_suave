@@ -1,36 +1,44 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
+    <Name />
+    <AssemblyName>bjoernerlwein_de</AssemblyName>
+    <RootNamespace>bjoernerlwein_de</RootNamespace>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{6FEB7729-B297-45EC-9F7D-5A401A67FDD0}</ProjectGuid>
+    <SchemaVersion />
+    <ProjectGuid>6feb7729-b297-45ec-9f7d-5a401a67fdd0</ProjectGuid>
+    <ProjectType />
     <OutputType>Exe</OutputType>
-    <RootNamespace>bjoernerlwein_de</RootNamespace>
-    <AssemblyName>bjoernerlwein_de</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+    <AutoGenerateBindingRedirects />
+    <TargetFSharpCoreVersion />
+    <DocumentationFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
+    <DebugType>Full</DebugType>
     <Optimize>false</Optimize>
     <Tailcalls>false</Tailcalls>
     <OutputPath>bin\Debug</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <CompilationConstants />
     <WarningLevel>3</WarningLevel>
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <DocumentationFile>bin\Debug\bjoernerlwein_de.XML</DocumentationFile>
     <Prefer32Bit>true</Prefer32Bit>
+    <OtherFlags />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
-    <DebugType>pdbonly</DebugType>
+    <DebugSymbols />
+    <DebugType>PdbOnly</DebugType>
     <Optimize>true</Optimize>
     <Tailcalls>true</Tailcalls>
     <OutputPath>bin\Release</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <CompilationConstants />
     <WarningLevel>3</WarningLevel>
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <DocumentationFile>bin\Release\bjoernerlwein_de.XML</DocumentationFile>
     <Prefer32Bit>true</Prefer32Bit>
+    <OtherFlags />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
@@ -49,6 +57,7 @@
     <Compile Include="Posts.fs" />
     <Compile Include="Staticpages.fs" />
     <Compile Include="Sitemap.fs" />
+    <Compile Include="TwilightImperium.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\..\Microsoft SDKs\F#\4.0\Framework\v4.0\Microsoft.FSharp.Targets" />

@@ -52,7 +52,24 @@ let page mode =
               h1 [] [
                 a [href "#/post/{{post.id}}"] ["{{post.title}}"]]
               small [] ["{{post.date}}"]
-              div [] ["{{{post.content}}}"]]]]]
+              div [] ["{{{post.content}}}"]]]]
+        script ["type", "x-template"; "id", "ti-tpl"] [
+          div [] [
+            div ["class", "ti-anleitung"] [
+              "In die Felder die Spieler in Würfelreihenfolge eingeben und dann den Knopf drücken"]
+            table ["class", "ti-race-pick"] [
+              tbody [] [
+                tr ["v-for", "slot in slots"] [
+                  td [] [
+                    input ["type", "text"; "class", "ti-player"] []]]]
+              tfoot [] [
+                td [] [
+                  button ["type", "button"; "v-on:click", "submit()"] ["Dann mach mal"]]]]
+            ol ["v-for", "result in results"; "class", "result-list"] [
+              li [] [
+                strong [] ["{{result.name}}"]
+                " spielt heute: "
+                strong [] ["{{result.race}}"]]]]]]
       body [] [
         div [classAttr "sidebar"] [
           header [] [

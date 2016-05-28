@@ -27,10 +27,10 @@ let postCollection =
 
 let routes =
     choose [
-        GET >=> path "/posts/index" >=> Writers.setMimeType "text/html" >=> OK Templates.posts
-        GET >=> path "/posts" >=> Writers.setMimeType "application/json" >=> OK (JsonConvert.SerializeObject postCollection)
-        GET >=> path "/posts/show" >=> Writers.setMimeType "text/html" >=> OK Templates.post
-        GET >=> pathScan "/post/%s" (fun (id) ->
+        path "/posts/index" >=> Writers.setMimeType "text/html" >=> OK Templates.posts
+        path "/posts" >=> Writers.setMimeType "application/json" >=> OK (JsonConvert.SerializeObject postCollection)
+        path "/posts/show" >=> Writers.setMimeType "text/html" >=> OK Templates.post
+        pathScan "/post/%s" (fun (id) ->
             try
                 postCollection
                 |> List.find (fun (item) ->
