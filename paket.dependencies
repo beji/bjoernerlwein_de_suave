@@ -5,6 +5,6 @@ nuget ListML
 nuget Suave
 nuget AjaxMin
 nuget Fsharp.Formatting
-nuget Logary
+nuget Logary 3.6.1
 nuget Logary.Adapters.Suave
 nuget Newtonsoft.Json.Fsharp
