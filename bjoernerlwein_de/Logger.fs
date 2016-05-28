@@ -19,5 +19,6 @@ let logMsg =
   Logger.debug logger
 let logDbg = Logger.debug logger
 let logInfo = Logger.info logger
+let logError = Logger.error logger
 
 let adapter = SuaveAdapter logger
