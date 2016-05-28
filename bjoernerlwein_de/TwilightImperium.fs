@@ -27,7 +27,8 @@ let KnuthShuffle (lst : array<'a>) =                   // '
     lst                                                             // Return the list shuffled in place
 
 let prepareRequest (reqString:string) : string list =
-    reqString.Split([|'|'|])
+    let sanitized = reqString.Replace('|', '*')
+    sanitized.Split([|'|'|])
     |> Array.toList
      
 
