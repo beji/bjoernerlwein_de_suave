@@ -54,7 +54,7 @@ let getRacesForPlayers requestString races =
     |> List.rev
     
 let routes = 
-    path "/ti" >=> request (fun req ->
+    path "/ti" >=> Writers.setMimeType "application/json" >=> request (fun req ->
         let players = req.formData "players"
         match players with
         | Choice1Of2 players -> 
