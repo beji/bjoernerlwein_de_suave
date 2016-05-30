@@ -4,6 +4,7 @@ open Suave.Filters
 open Suave.Operators
 open Suave.Successful
 open Suave.RequestErrors
+open Suave.Utils
 open Logger
 open Newtonsoft.Json
 
@@ -20,10 +21,10 @@ let KnuthShuffle (lst : array<'a>) =                   // '
         let item = lst.[i]
         lst.[i] <- lst.[j]
         lst.[j] <- item
-    let rnd = new System.Random()
+    
     let ln = lst.Length
     [0..(ln - 2)]                                                   // For all indices except the last
-    |> Seq.iter (fun i -> Swap i (rnd.Next(i, ln)))                 // swap th item at the index with a random one following it (or itself)
+    |> Seq.iter (fun i -> Swap i (ThreadSafeRandom.next i ln))                 // swap th item at the index with a random one following it (or itself)
     lst                                                             // Return the list shuffled in place
 
 let prepareRequest (reqString:string) : string list =
@@ -56,6 +57,8 @@ let getRacesForPlayers requestString races =
 let routes = 
     path "/ti" >=> Writers.setMimeType "application/json" >=> request (fun req ->
         let players = req.formData "players"
+        req.formData "players"         
+        |> printfn "%A" 
         match players with
         | Choice1Of2 players -> 
             let resp = 
