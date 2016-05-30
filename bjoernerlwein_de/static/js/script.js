@@ -232,11 +232,10 @@
           ajax({
             url: '/ti',
             method: 'POST',
-            body: 'players=' + players 
+            body: 'players=' + encodeURIComponent(players) 
           }, function(code, responseText, request) {
             if (code === 200) {
               var resp = JSON.parse(responseText);
-              console.log(resp);
               _this.results = resp;
 
             } else {
