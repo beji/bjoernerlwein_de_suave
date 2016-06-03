@@ -33,6 +33,8 @@ let page mode =
     html ["lang","de"] [
       head [] [
         meta ["charset", "UTF-8"]
+        meta ["http-equiv", "X-UA-Compatible"; "content", "IE=edge"]
+        meta ["viewport", "width=device-width,initial-scale=1"]
         title ["id", "title"] ["Bjoernerlwein.de"]
         stylesheets
         link [href "//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic,700italic";  "rel", "stylesheet";  "type", "text/css"] []
