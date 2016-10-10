@@ -1,0 +1,19 @@
+{
+  "name": "bjoernerlwein_de_suave",
+  "version": "1.0.0",
+  "description": "This is a port of my old node.js based https://github.com/beji/bjoernerlwein_de to F# using http://suave.io/. This was mostly done to teach myself some F# so the code is probably not very good or idiomatic.",
+  "dependencies": {
+    "bower": "^1.7.9",
+    "less": "^2.7.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beji/bjoernerlwein_de_suave.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/beji/bjoernerlwein_de_suave/issues"
+  },
+  "homepage": "https://github.com/beji/bjoernerlwein_de_suave#readme"
+}

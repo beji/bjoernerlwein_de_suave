@@ -53,7 +53,7 @@
         this.title = "Bjoernerlwein.de | " + title;
       }
     }
-  })
+  });
 
   new Vue({
     el: '#staticpageslist',
@@ -205,7 +205,7 @@
 
     }
   });
-  
+
   Vue.component('twilightimperium', {
     template: '#ti-tpl',
     data: function() {
@@ -217,7 +217,7 @@
     ready: function(){
       for (var i = 0; i < 8; i++){
         this.slots.push(i);
-      }      
+      }
     },
     methods: {
       submit: function() {
@@ -227,12 +227,12 @@
         }).filter(function(name){
           return name != "";
         }).join("|");
-        
+
         if(players !== '') {
           ajax({
             url: '/ti',
             method: 'POST',
-            body: 'players=' + encodeURIComponent(players) 
+            body: 'players=' + encodeURIComponent(players)
           }, function(code, responseText, request) {
             if (code === 200) {
               var resp = JSON.parse(responseText);
@@ -241,7 +241,7 @@
             } else {
               //location.hash = '/';
             }
-          });          
+          });
         }
       }
     }

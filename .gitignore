@@ -46,3 +46,4 @@ bjoernerlwein_de/static/bower/
 .paket/paket.exe
 bjoernerlwein_de/static/css/style.css
 deploy.sh
+node_modules
